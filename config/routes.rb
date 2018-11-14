@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  get 'users/edit'
-  get 'users/new'
-  get 'users/show'
-  get 'brewery_threads/edit'
-  get 'brewery_threads/index'
-  get 'brewery_threads/new'
-  get 'brewery_threads/show'
-  get 'posts/edit'
+  #get 'users/edit'
+  #get 'users/new'
+  #get 'users/show'
+  #get 'brewery_threads/edit'
+  #get 'brewery_threads/index'
+  #get 'brewery_threads/new'
+  #get 'brewery_threads/show'
+  #get 'posts/edit'
+  resources :users
   resources :brewery_threads, path: :threads do
     get "brewery_state/:id", to: "brewery_states#index", as: :brewery_state
     resources :posts, path: :posts
