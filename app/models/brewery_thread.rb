@@ -1,0 +1,2 @@
+class BreweryThread < ApplicationRecord
+end

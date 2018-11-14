@@ -1,0 +1,2 @@
+class BreweryState < ApplicationRecord
+end
