@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   #get 'posts/edit'
   resources :users
   resources :brewery_threads, path: :threads do
-    get "brewery_state/:id", to: "brewery_states#index", as: :brewery_state
+    collection do
+      get :author
+      get :participant
+      get "brewery_state/:id", to: "brewery_states#index", as: :brewery_state
+    end
     resources :posts, path: :posts
   end
   root to: "brewery_threads#index"

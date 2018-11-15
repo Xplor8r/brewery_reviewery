@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
     helper_method :is_admin?
+    helper_method :is_admin_or_author?
 
     def is_admin_or_author?(object)
       is_admin? || object.user == current_user
     end
-    helper_method :is_admin_or_author?
   
     def is_admin?
       current_user.respond_to?(:admin) && current_user.admin?
@@ -25,6 +25,6 @@ class ApplicationController < ActionController::Base
     private
   
     def redirect_to_root
-      redirect_to root_path, alert: "Hey, you can't do that."
+      redirect_to root_path, alert: "Hey, you can't do that!"
     end 
 end
