@@ -10,54 +10,21 @@
   </head>
 
   <body>
-  <div class="row col-md-12">
-  <h1>Brewery Reviewery Community</h1>
-</div>
-
-<div class="row brewery_reviewery">
-  <div class="col-md-3 mb-3">
-
-    <div class="card card-body">
-      <%= link_to 'Create Brewery Thread', new_brewery_thread_path, class: "btn btn-outline-primary btn-block" %>
-      <hr />
-
-      <div class="brewery-thread-filters">
-        <h5><strong>Filters</strong></h5>
-    <% if false %>
-         <div><%= link_to brewery_threads_path, exact: true do %><%= icon "bars" %> All Threads <% end %></div> 
-        <% if user_signed_in? %>
-          <div><%= link_to mine_brewery_threads_path do %><%= icon "user-circle-o" %> My Threads<% end %></div>
-          <div><%= link_to participating_brewery_threads_path do %><%= icon "comments-o" %> Participating<% end %></div>
-        <% end %>
-    <% end %>
-      </div>
-
-      <hr />
-
-      <div class="brewery-thread-filters">
-        <h6><strong>By State</strong></h6>
-    <% if false %>
-        <div><%= link_to brewery_threads_path, exact: true do %><%= icon "circle" %> All<% end %></div>
-        <% BreweryState.sorted.each do |state| %>
-          <div>
-            <%= link_to brewery_state_brewery_threads_path(state) do %>
-              <%= icon "circle", style: "color: black" %>
-              <%= brewery_state.name %>
-            <% end %>
-          </div>
-        <% end %>
-    <% end %>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-9 mb-3">
-
-    <div class="card card-body">
-      <%= yield %>
+    <div class="row col-md-12">
+      <h1>Brewery Reviewery Community</h1>
     </div>
 
-  </div>
-</div>
+    <div class="row brewery_reviewery">
+      <div class="col-md-3 mb-3">
+        <div class="card card-body">
+          <%= link_to 'Create Brewery Thread', new_brewery_thread_path, class: "btn btn-outline-primary btn-block" %>
+        </div>
+      </div>
+      <div class="col-md-9 mb-3">
+        <div class="card card-body">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
