@@ -4,7 +4,7 @@ class BreweryThreadsController < ApplicationController
   before_action :require_admin_or_author_for_post!, only: [:edit, :update]
 
   def index
-    @brewery_threads = BreweryThread.updated_at_first.sorted.includes(:user, :brewery_state)
+    @brewery_threads = BreweryThread.created_at_first.sorted.includes(:user, :brewery_state)
   end
 
   def author

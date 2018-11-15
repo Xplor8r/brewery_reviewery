@@ -12,5 +12,5 @@ class BreweryThread < ApplicationRecord
     validates :user_id, :brewery, presence: true
     validates_associated :posts
  
-    scope :sorted, ->{order(updated_at: :desc)}
+    scope :sorted, ->{order(created_at: :desc)}
 end
