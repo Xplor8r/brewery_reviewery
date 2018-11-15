@@ -1,0 +1,44 @@
+<%= form_for @brewery_thread,
+   url: (@brewery_thread.persisted? ? brewery_thread_path(@brewery_thread) : brewery_threads_path),
+   html: { data: {behavior: "post-form"} } do |f| %>
+
+  <% if @brewery_thread.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@brewery_thread.errors.count, "error") %> prohibited this thread from being saved:</h2>
+
+      <ul>
+      <% @brewery_thread.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :brewery_state_id, "Choose a State" %>
+    <%= f.collection_select :brewery_state_id, BreweryState.sorted, :id, :name, {include_blank: "Pick a state..."}, {autofocus: true, class: "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :brewery %>
+    <%= f.text_field :brewery, placeholder: "Brewery name", class: "form-control" %>
+  </div>
+
+  <% if local_assigns.fetch(:posts, true) %>
+    <%= f.fields_for :posts do |p| %>
+      <div class="form-group">
+        <%= p.label :body, "Your Brewery Review" %>
+        <%= p.text_area :body, placeholder: "Please give your personal review of this brewery.", rows: 10, class: "form-control" %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="form-group text-right">
+    <% if f.object.new_record? %>
+      <%= f.button "Your Brewery Review" %>
+    <% else %>
+      <%= f.button "Update Thread" %>
+    <% end %>
+  </div>
+
+<% end %>
