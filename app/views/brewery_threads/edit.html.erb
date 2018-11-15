@@ -1,2 +1,7 @@
-<h1>BreweryThreads#edit</h1>
-<p>Find me in app/views/brewery_threads/edit.html.erb</p>
+<%= content_for :brewery, "Edit Thread" %>
+
+<h1>Edit Thread</h1>
+
+<div class="post">
+  <%= render 'form', posts: false %>
+</div>
