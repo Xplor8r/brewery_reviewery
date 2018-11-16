@@ -1,2 +1,16 @@
-<h1>BreweryThreads#show</h1>
-<p>Find me in app/views/brewery_threads/show.html.erb</p>
+<div class="row">
+  <% if is_admin_or_author?(@brewery_thread) %>
+    <div class="col-md-1">
+      <%= link_to "Edit this thread", edit_brewery_thread_path(@brewery_thread), class: "text-muted" %>
+    </div>
+  <% end %>
+</div>
+
+<p class="thread-details">
+  <strong><%= brewery_state_link(@brewery_thread.brewery_state) %></strong>
+  • Posted <%= time_ago_in_words(@brewery_thread.created_at) + ' ago' %> by <%= @brewery_thread.user.name %>
+</p>
+
+<%= render partial: "posts/forum_post", collection: @brewery_thread.posts.includes(:user).sorted %>
+
+<%= render partial: "posts/form" if user_signed_in? %>
