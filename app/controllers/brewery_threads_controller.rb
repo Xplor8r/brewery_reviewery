@@ -8,12 +8,12 @@ class BreweryThreadsController < ApplicationController
   end
 
   def author
-    @brewery_threads.where(user: current_user).sorted.includes(:user, :brewery_state)
+    @brewery_threads = BreweryThread.where(user: current_user).sorted.includes(:user, :brewery_state)
     render action: :index
   end
 
   def participant
-    @brewery_threads.includes(:user, :brewery_state).joins(:posts).where(posts: { user_id: current_user.id }).distinct(posts: :id).sorted
+    @brewery_threads = BreweryThread.includes(:user, :brewery_state).joins(:posts).where(posts: { user_id: current_user.id }).distinct(posts: :id).sorted
     render action: :index
   end
 
