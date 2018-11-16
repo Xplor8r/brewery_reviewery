@@ -1,4 +1,4 @@
-<%= form_for @brewery_thread, do |f| %>
+<%= form_for @brewery_thread do |f| %>
 
   <% if @brewery_thread.errors.any? %>
     <div id="error_explanation">
@@ -33,7 +33,7 @@
 
   <div class="form-group text-right">
     <% if f.object.new_record? %>
-      <%= f.button "Your Brewery Review" %>
+      <%= f.button "Create Brewery Review" %>
     <% else %>
       <%= f.button "Update Thread" %>
     <% end %>

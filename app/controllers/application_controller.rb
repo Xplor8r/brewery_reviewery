@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     helper_method :is_admin_or_author?
     protect_from_forgery with: :exception
     helper_method :current_user
-    before_action :current_user
+
 
 
     def logged_in?

@@ -40,9 +40,35 @@
 
     <div class="row brewery_reviewery">
       <div class="col-md-3 mb-3">
+
         <div class="card card-body">
-          <%= link_to 'Create Brewery Thread', new_brewery_thread_path, class: "btn btn-outline-primary btn-block" %>
+          <% if current_user %>
+            <%= link_to 'Create a Brewery Review Thread', new_brewery_thread_path, class: "btn btn-outline-primary btn-block" %>
+          <% else %>
+            <%= link_to 'Create a Brewery Review Thread', new_user_path, class: "btn btn-outline-primary btn-block" %>
+          <% end %>
+          <hr />
+
+          <div class="brewery-thread-filters">
+            <h5><strong>Filters</strong></h5>
+            <div><%= link_to "All Threads", brewery_threads_path %></div>
+            <% if current_user %>
+              <div><%= link_to "Your Brewery Threads", author_brewery_threads_path %></div>
+              <div><%= link_to "Participating In", participant_brewery_threads_path %></div>
+            <% end %>
         </div>
+
+          <hr />
+
+          <div class="brewery-thread-filters">
+            <h6><strong>By State</strong></h6>
+            <div><%= link_to "All", brewery_threads_path %></div>
+            <% BreweryState.sorted.each do |state| %>
+              <div><%= link_to state.name, brewery_state_brewery_threads_path(state) %></div>
+            <% end %>
+          </div>
+        </div>
+
       </div>
       <div class="col-md-9 mb-3">
         <div class="card card-body">
