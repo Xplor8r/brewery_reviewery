@@ -1,6 +1,15 @@
 class ApplicationController < ActionController::Base
     helper_method :is_admin?
     helper_method :is_admin_or_author?
+    protect_from_forgery with: :exception
+    helper_method :current_user
+    before_action :current_user
+
+
+    def logged_in?
+      !!current_user
+    end
+
 
     def is_admin_or_author?(object)
       is_admin? || object.user == current_user
@@ -21,10 +30,21 @@ class ApplicationController < ActionController::Base
         redirect_to_root
       end
     end
-  
+
     private
+      def please_log_in
+        if !logged_in?
+          redirect_to root_path
+        end
+      end
+
+      def current_user
+        if session[:user_id]
+          @current_user ||= User.find(session[:user_id])
+        end
+      end
   
-    def redirect_to_root
-      redirect_to root_path, alert: "Hey, you can't do that!"
-    end 
+      def redirect_to_root
+        redirect_to root_path, alert: "Hey, you can't do that!"
+      end 
 end
