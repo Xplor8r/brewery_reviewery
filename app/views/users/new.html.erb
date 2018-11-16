@@ -1,42 +1,60 @@
-<%= form_for @user do |f| %>
-    <% if @user.errors.any? %>
-      <div id="error_explanation">
-        <h2>
-          <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
-        </h2>
-  
-        <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-  
-    <div class="form-group">
-        <%= f.label :name %>
-        <br>
-        <%= f.text_field :name, class: "form-control" %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BreweryReviewery</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="stylesheets/application.css">
+  </head>
+  <body>
+    <div class="col-md-12">
+      <%= form_for @user do |f| %>
+          <% if @user.errors.any? %>
+            <div id="error_explanation">
+              <h2>
+                <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
+              </h2>
+        
+              <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+        <div class="form-row">
+          <div class=" form-group col-md-6">
+            <div>
+                <%= f.label :name %>
+                <%= f.text_field :name, class: "form-control" %>
+            </div><br>
+          
+            <div>
+                <%= f.label :email %>
+                <%= f.text_field :email, class: "form-control" %>
+            </div><br>
+          
+            <div>
+              <%= f.label :admin, "Check box if you are an admin user." %>
+              <%= f.check_box :admin, class: "form-check-input form-control" %>
+            </div><br>
+          
+            <div>
+              <%= f.label :password %>
+              <%= f.password_field :password, class: "form-control" %>
+            </div><br>
+            <div class="actions">
+              <%= f.submit class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
-  
-    <div class="form-group">
-        <%= f.label :email %>
-        <br>
-        <%= f.text_field :email, class: "form-control" %>
-    </div>
-  
-    <div class="form-group">
-      <%= f.label :admin, "Check box if you are an admin user." %>
-      <%= f.check_box :admin, class: "form-check-input" %>
-    </div>
-  
-    <div class="form-group">
-      <%= f.label :password %>
-      <br>
-      <%= f.password_field :password, class: "form-control" %>
-  
-    <div class="actions">
-      <%= f.submit class: "btn btn-primary" %>
-    </div>
-    
-  <% end %>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
