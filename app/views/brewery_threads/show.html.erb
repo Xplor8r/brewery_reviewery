@@ -1,16 +1,16 @@
 <div class="row">
-  <% if is_admin_or_author?(@brewery_thread) %>
-    <div class="col-md-6">
-      <%= link_to "Edit this thread", edit_brewery_thread_path(@brewery_thread), class: "text-muted", data: { toggle: "tooltip", placement: "left" }, title: "Edit this Thread" %>
-    </div>
-  <% end %>
+  <div class="col-md-12">
+    <h3> <%= @brewery_thread.brewery %></h3>
+    <% if is_admin_or_author?(@brewery_thread) %>
+      <%= link_to "Edit this thread", edit_brewery_thread_path(@brewery_thread), class: "text-muted", title: "Edit this Thread" %>
+    <% end %>
+
+    <p class="thread-details">
+      <strong><%= brewery_state_link(@brewery_thread.brewery_state) %></strong>
+      • Posted <%= time_ago_in_words(@brewery_thread.created_at) + ' ago' %> by <%= @brewery_thread.user.name %>
+    </p>
+  </div>
 </div>
-
-<p class="thread-details">
-  <strong><%= brewery_state_link(@brewery_thread.brewery_state) %></strong>
-  • Posted <%= time_ago_in_words(@brewery_thread.created_at) + ' ago' %> by <%= @brewery_thread.user.name %>
-</p>
-
 <%= render partial: "posts/post", collection: @brewery_thread.posts.includes(:user).sorted %>
 
 <%= render partial: "posts/form" %>

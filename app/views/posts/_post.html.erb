@@ -1,8 +1,8 @@
 <%= content_tag :div, id: dom_id(post) do %>
     <div class="card-header">
       <% if is_admin_or_author?(post) %>
-        <div class="pull-right">
-          <%= link_to edit_brewery_thread_post_path(@brewery_thread, post), class: "text-muted", title: "Edit this post" %>
+        <div class="col-md-6 pull-right">
+        <%= link_to "Edit this post", edit_brewery_thread_post_path(@brewery_thread, post), class: "text-muted", title: "Edit this Thread" %>
         </div>
       <% end %>
 

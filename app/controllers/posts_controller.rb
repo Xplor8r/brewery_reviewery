@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+
   before_action :b_thread
   before_action :b_post, only: [:edit, :update]
   before_action :require_admin_or_author_for_post!, only: [:edit, :update]
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   private
 
     def b_thread
-      @brewery_thread = ForumThread.friendly.find(params[:forum_thread_id])
+      @brewery_thread = BreweryThread.friendly.find(params[:brewery_thread_id])
     end
 
     def b_post
