@@ -1,5 +1,5 @@
 <h3>Log_in</h3>
-<%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
+<%= form_for sign_in_path, method: :post do |f| %>
 
     <div class="form-group">
       <%= f.label :name, "Select your name" %><br>
@@ -15,3 +15,5 @@
       <%= f.submit "Sign In", class: "btn btn-primary" %>
     </div>
   <% end %>
+
+<p><%= link_to('Log in with Google!', '/auth/google_oauth2') %></p>
