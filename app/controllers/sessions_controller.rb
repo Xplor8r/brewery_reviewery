@@ -16,27 +16,30 @@ class SessionsController < ApplicationController
           session[:user_id] = @user.id
           redirect_to user_path(@user)
         else
-          redirect_to new_user_url
+          redirect_to signin_path
         end
       else
         @user = User.new
-        redirect_to new_user_url
+        redirect_to signin_path
       end  
     end
-    
+
+    def auth
+      request.env["omniauth.auth"]
+    end
+
     def google
-        auth = request.env['omniauth.auth']
-        if auth
-          @user = User.find_or_create_by(uid: auth['uid']) do |user|
-            user.name = auth['info']['name']
-            user.email = auth['info']['email']
-            user.password = params[:code][0..71]
-          end
-          session[:user_id] = @user.id
-          redirect_to user_path(@user)
-        else
-          @user = User.new
-          redirect_to new_user_url
+      if auth
+        @user = User.find_or_create_by(uid: auth['uid']) do |u|
+          u.name = auth['info']['name']
+          u.email = auth['info']['email']
+          u.password = params[:code][0..71]
         end
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+      else
+        @user = User.new
+        redirect_to new_user_url
       end
+    end
   end

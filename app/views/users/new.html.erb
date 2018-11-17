@@ -1,5 +1,5 @@
-<h3>Sign In</h3>
-<%= form_for @user do |f| %>
+<h3>Sign Up</h3>
+<%= form_for @user, controller: 'users', action: 'create' do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h4>
@@ -14,7 +14,7 @@
     </div>
   <% end %>
   
-  <div class=" form-group">
+  <div class="col form-group">
     <div>
         <%= f.label :name %>
         <%= f.text_field :name, class: "form-control" %>
@@ -36,9 +36,9 @@
       <%= f.password_field :password, class: "form-control" %>
     </div><br>
     <div class="actions">
-      <%= f.submit class: "btn btn-primary" %>
+      <%= f.submit "Sign Up", class: "btn btn-primary" %>
   </div>
 
 
 <% end %>
-<p><%= link_to('Log in with Google!', '/auth/google_oauth2') %></p>
+<p><%= link_to('Sign up with Google!', '/auth/google_oauth2') %></p>

@@ -28,8 +28,8 @@ img {
   border-bottom-color: #818e8e;
 }
 
-.active {
-  background-color: #a98747;
+#error_explanation {
+  color: red;
 }
 
 .form-group label {

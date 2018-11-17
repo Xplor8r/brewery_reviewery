@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-
+  before_action :current_user
   before_action :b_thread
   before_action :b_post, only: [:edit, :update]
   before_action :require_admin_or_author_for_post!, only: [:edit, :update]

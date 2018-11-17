@@ -1,4 +1,4 @@
-<h3>Log_in</h3>
+<h3>Log In</h3>
 <%= form_for @user, method: :post do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -13,8 +13,8 @@
       </ul>
     </div>
   <% end %>
-  
-  <div class=" form-group">
+
+  <div class="form-group col">
     <div>
         <%= f.label :name %>
         <%= f.text_field :name, class: "form-control" %>

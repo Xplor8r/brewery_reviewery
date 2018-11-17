@@ -1,6 +1,7 @@
 class BreweryStatesController < ApplicationController
     before_action :b_state
-
+    before_action :current_user
+    
     def index
       @brewery_threads = BreweryThread.where(brewery_state: @brewery_state) if @brewery_state.present?
       @brewery_threads = @brewery_threads.sorted.includes(:user, :brewery_state)

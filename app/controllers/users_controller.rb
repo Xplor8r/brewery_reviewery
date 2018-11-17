@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   before_action :b_user, only: [:show, :update, :edit, :destroy]
 
   def show
+    redirect_to_root
+  end
 
+  def index
+    redirect_to_root
   end
 
   def new
