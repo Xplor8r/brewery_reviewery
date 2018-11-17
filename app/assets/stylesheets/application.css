@@ -1,12 +1,106 @@
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
+#header {
+  padding-top:  30px;
+  box-shadow: none;
+}
+
+div #center {
+  margin: auto;
+  width: 50%;
+}
+img {
+  padding-top:  30px;
+  margin: auto;
+  width: 100%;
+  max-width: 100%;
+
+}
+
+.right {
+  align: right;
+  z-index: 4;
+}
+
+.break {
+  padding-bottom: 10px;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  border-bottom-color: #818e8e;
+}
+
+.active {
+  background-color: #a98747;
+}
+
+.form-group label {
+  display: inline;
+}
+
+.row {
+  margin-bottom: 20px
+}
 
 body {
-
-  padding-top: 70px;
-  padding-bottom: 30px;
+	background: #a98747;
+	font-size: 100%;
+	font-family: 'Times New Roman', serif;
 }
+
+.wrapper {
+	width: 960px;
+	margin: 10px auto;
+	background: #fff;
+	padding: 0 30px 0 30px;
+}
+
+h1 {
+  color: #190101;
+
+}
+
+h2 {
+	color: #190101;
+	font-size: 2em;
+	padding: 0;
+	margin-top: 20px;
+}
+
+h3 {
+	color: #190101;
+	font-size: 1.5em;
+	padding: 0;
+	margin-top: 20px;
+}
+
+p  {
+	color: #717b7c;
+	font-size: 1em;
+	margin-top: 20px;
+	padding: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+#inline-button {
+  display: inline;
+  float: left;
+  margin-left: 3px;
+}
+
+.nav-link {
+  border-right-width:  2px;
+  border-right-style: solid;
+  border-right-color: #cccc;
+}
+
+footer {
+  color: #7a6f69;
+  text-align: right;
+  font-size: 13px;
+  margin: 0;
+	padding: 0;
+ }
 
  .btn {
   margin: 5px 0;
@@ -16,9 +110,6 @@ body {
   text-align: center;
 }
 
-.form-check-input {
-    display: inline;
-}
 
   .brewery-thread-filters {
     a {
@@ -33,10 +124,10 @@ body {
       margin-bottom: 4px;
   
       a {
-        color: #222;
+        color: #190101;
         font-size: 16px;
         font-weight: normal;
-        line-height: 1.1;
+
       }
     }
   }
@@ -59,7 +150,7 @@ body {
   }
 
   .brewery-thread-posts-count {
-    color: #222;
+    color: #190101;
     text-align: center;
   
     span, small {
@@ -73,7 +164,7 @@ body {
     }
   
     &:hover {
-      color: #222;
+      color: #190101;
       text-decoration: none;
     }
   }
@@ -82,4 +173,26 @@ body {
     color: #999;
     margin-top: 6px;
     font-size: 13px;
+  }
+
+
+  @media only screen and (max-width: 992px) {
+    .wrapper {
+      width: 90%
+    }
+    h1 {
+      font-size: 2.5em;
+    }
+    h2 {
+      font-size: 1.5em;
+    }
+
+    h3 {
+      font-size: 1.25em;
+    }
+
+    p {
+      font-size: 1em;
+    }
+
   }

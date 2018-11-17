@@ -1,0 +1,23 @@
+<%= form_for [@brewery_thread, @post],
+  url: (@post.persisted? ? brewery_thread_post_path(@brewery_thread, @post) : brewery_thread_posts_path(@brewery_thread)),
+  html: { data: { behavior: "comment-form" } } do |f| %>
+
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.text_area :body, placeholder: "Post a comment", rows: 8, class: "form-control", data: { behavior: "comment-body" } %>
+  </div>
+    <%= f.button "#{"Update" unless f.object.new_record?} Comment", class: "btn btn-primary"%>
+  </div>
+
+<% end %>

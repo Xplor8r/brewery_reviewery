@@ -1,0 +1,24 @@
+<%= content_tag :div, id: dom_id(post), class: post_classes(post) do %>
+    <div class="card-header">
+      <% if is_admin_or_author?(post) %>
+        <div class="pull-right">
+          <%= link_to edit_brewery_thread_post_path(@brewery_thread, post), class: "text-muted", title: "Edit this post" %>
+        </div>
+      <% end %>
+
+      <div>
+        <%= avatar_tag(post.user.email) %>
+        <strong class="post-user">
+          <%= post.user.name %> <%= user_badge(post.user) %>
+        </strong>
+        <small>
+          commented on
+          <%= link_to post.created_at.strftime("%b %d, %Y"), brewery_thread_path(@brewery_thread, anchor: "post_#{post.id}") %>:
+        </small>
+      </div>
+    </div>
+  
+    <div class="card-body">
+      <p><%= post.body %></p>
+    </div>
+<% end %>

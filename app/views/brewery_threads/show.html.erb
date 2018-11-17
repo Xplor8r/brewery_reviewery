@@ -11,6 +11,6 @@
   • Posted <%= time_ago_in_words(@brewery_thread.created_at) + ' ago' %> by <%= @brewery_thread.user.name %>
 </p>
 
-<%= render partial: "posts/forum_post", collection: @brewery_thread.posts.includes(:user).sorted %>
+<%= render partial: "posts/post", collection: @brewery_thread.posts.includes(:user).sorted %>
 
 <%= render partial: "posts/form" if user_signed_in? %>
