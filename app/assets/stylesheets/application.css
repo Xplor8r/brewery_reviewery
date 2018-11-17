@@ -21,13 +21,6 @@ img {
   z-index: 4;
 }
 
-.break {
-  padding-bottom: 10px;
-  border-bottom-width: 3px;
-  border-bottom-style: solid;
-  border-bottom-color: #818e8e;
-}
-
 #error_explanation {
   color: red;
 }
@@ -41,6 +34,7 @@ img {
 }
 
 body {
+
 	background: #a98747;
 	font-size: 100%;
 	font-family: 'Times New Roman', serif;
@@ -158,7 +152,7 @@ footer {
     }
   
     .count {
-      font-size: 1.5em;
+      font-size: 1.25em;
       font-weight: 300;
       line-height: 1em;
     }
