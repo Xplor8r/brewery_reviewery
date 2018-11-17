@@ -1,6 +1,4 @@
-<%= form_for [@brewery_thread, @post],
-  url: (@post.persisted? ? brewery_thread_post_path(@brewery_thread, @post) : brewery_thread_posts_path(@brewery_thread)),
-  html: { data: { behavior: "comment-form" } } do |f| %>
+<%= form_for [@brewery_thread, @post] do |f| %>
 
   <% if @post.errors.any? %>
     <div id="error_explanation">

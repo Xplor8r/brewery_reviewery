@@ -1,4 +1,4 @@
-<%= content_tag :div, id: dom_id(post), class: post_classes(post) do %>
+<%= content_tag :div, id: dom_id(post) do %>
     <div class="card-header">
       <% if is_admin_or_author?(post) %>
         <div class="pull-right">
@@ -7,9 +7,8 @@
       <% end %>
 
       <div>
-        <%= avatar_tag(post.user.email) %>
         <strong class="post-user">
-          <%= post.user.name %> <%= user_badge(post.user) %>
+          <%= post.user.name %>
         </strong>
         <small>
           commented on

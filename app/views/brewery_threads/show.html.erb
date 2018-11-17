@@ -1,7 +1,7 @@
 <div class="row">
   <% if is_admin_or_author?(@brewery_thread) %>
-    <div class="col-md-1">
-      <%= link_to "Edit this thread", edit_brewery_thread_path(@brewery_thread), class: "text-muted" %>
+    <div class="col-md-6">
+      <%= link_to "Edit this thread", edit_brewery_thread_path(@brewery_thread), class: "text-muted", data: { toggle: "tooltip", placement: "left" }, title: "Edit this Thread" %>
     </div>
   <% end %>
 </div>
@@ -13,4 +13,4 @@
 
 <%= render partial: "posts/post", collection: @brewery_thread.posts.includes(:user).sorted %>
 
-<%= render partial: "posts/form" if user_signed_in? %>
+<%= render partial: "posts/form" %>

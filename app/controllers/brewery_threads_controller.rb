@@ -51,7 +51,7 @@ class BreweryThreadsController < ApplicationController
   private
 
     def b_thread
-      @brewery_thread.friendly.find(params[:id])
+      @brewery_thread= BreweryThread.friendly.find(params[:id])
     end
 
     def brewery_thread_params
