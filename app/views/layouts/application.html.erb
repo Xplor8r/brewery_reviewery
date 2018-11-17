@@ -15,7 +15,7 @@
   <body>
     <div class="wrapper">
       <div class="container">
-        <div class="row col-sm-12">
+        <div class="row">
           <img src="/images/brewery_reviewery_header.jpg" alt="Beer taps at a brewery and beer in big and small glasses">
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,44 +39,43 @@
             </div>
           </nav>
 
-          <div class="row brewery_reviewery">
-            <div class="col-md-3 mb-3">
-
-              <div class="card card-body">
-
-                <div class="brewery-thread-filters">
-                  <h5><strong>Filters</strong></h5>
-                  <div><%= link_to "All Threads", brewery_threads_path %></div>
-                  <% if current_user %>
-                    <div><%= link_to "Your Brewery Threads", author_brewery_threads_path(current_user.name) %></div>
-                    <div><%= link_to "Participating In", participant_brewery_threads_path %></div>
-                  <% end %>
-              </div>
-
+          <div class="col-sm-12">
+            <div class="row brewery_reviewery">
+              <div class="col-md-3 mb-3">
+                <div class="card card-body">
+                  <div class="brewery-thread-filters">
+                    <h5><strong>Filters</strong></h5>
+                    <div><%= link_to "All Threads", brewery_threads_path %></div>
+                    <% if current_user %>
+                      <div><%= link_to "Your Brewery Threads", author_brewery_threads_path(current_user.name) %></div>
+                      <div><%= link_to "Participating In", participant_brewery_threads_path %></div>
+                    <% end %>
+                </div>
                 <hr />
 
                 <div class="brewery-thread-filters">
                   <h6><strong>By State</strong></h6>
                   <div><%= link_to "All", brewery_threads_path %></div>
-                  <% BreweryState.sorted.each do |state| %>
-                    <div><%= brewery_state_link(state) %></div>
-                  <% end %>
+                    <% BreweryState.sorted.each do |state| %>
+                      <div><%= brewery_state_link(state) %></div>
+                    <% end %>
+                  </div>
                 </div>
+
               </div>
+              <div class="col-md-9 mb-3">
+                <div class="card card-body">
+                <h2>Brewery Reviewery Community</h2><hr />
 
-            </div>
-            <div class="col-md-9 mb-3">
-              <div class="card card-body">
-              <h2>Brewery Reviewery Community</h2><hr />
-
-                <%= yield %>
+                  <%= yield %>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <footer>
-        &copy; 2018 Brewery Reviewery. All Rights Reserved.
-      </footer>
+          &copy; 2018 Brewery Reviewery. All Rights Reserved.
+        </footer>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
