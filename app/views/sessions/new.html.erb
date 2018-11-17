@@ -1,19 +1,20 @@
 <h3>Log_in</h3>
-<%= form_for sign_in_path, method: :post do |f| %>
+<%= form_for @user, method: :post do |f| %>
 
-    <div class="form-group">
-        <%= f.label :name "Enter your user name"%><br>
-        <%= text_field_tag :name, class: "form-control" %>
-    </div>
+  <div class=" form-group">
+    <div>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+    </div><br>
 
-    <div class="form-group">
-        <%= f.label :email "Enter your email"%><br>
-        <%= text_field_tag :email, class: "form-control" %>
-    </div>
-  
+    <div>
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control" %>
+    </div><br>
+    
     <div class="form-group">
       <%= f.label :password, "Enter your password" %><br>
-      <%= f.password_field :password, class: "form-control" %>
+      <%= f.password_field :password %>
     </div>
   
     <div class="actions">

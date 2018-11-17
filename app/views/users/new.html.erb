@@ -25,12 +25,11 @@
         <%= f.text_field :email, class: "form-control" %>
     </div><br>
 
+    <h6>Check box if you are an admin user.</h6>
     <div>
-      <%= f.label :admin, "Check box if you are an admin user." %>
+      <%= f.label :admin %>
+      <%= f.check_box :admin %></p>
     </div>
-    <div>
-      <%= f.check_box :admin, class: "form-check-input form-control" %>
-    </div><br>
 
     <div>
       <%= f.label :password %>
@@ -39,6 +38,7 @@
     <div class="actions">
       <%= f.submit class: "btn btn-primary" %>
   </div>
-</div>
+
 
 <% end %>
+<p><%= link_to('Log in with Google!', '/auth/google_oauth2') %></p>
