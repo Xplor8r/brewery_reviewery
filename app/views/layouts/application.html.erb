@@ -59,7 +59,7 @@
                   <h6><strong>By State</strong></h6>
                   <div><%= link_to "All", brewery_threads_path %></div>
                   <% BreweryState.sorted.each do |state| %>
-                    <div><%= link_to state.name, brewery_state_brewery_threads_path(state) %></div>
+                    <div><%= brewery_state_link(state) %></div>
                   <% end %>
                 </div>
               </div>
