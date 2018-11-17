@@ -2,8 +2,13 @@
 <%= form_for sign_in_path, method: :post do |f| %>
 
     <div class="form-group">
-      <%= f.label :name, "Select your name" %><br>
-      <%= f.collection_select(:id, @users, :id, :name) %>
+        <%= f.label :name "Enter your user name"%><br>
+        <%= text_field_tag :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :email "Enter your email"%><br>
+        <%= text_field_tag :email, class: "form-control" %>
     </div>
   
     <div class="form-group">
