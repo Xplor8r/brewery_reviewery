@@ -5,7 +5,7 @@
       <h4><%= flash[:message] %></h4>
     <% end %>
   </div>
-  <%= form_for @user, method: :post do |f| %>
+  <%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
     <% if @user.errors.any? %>
       <div id="error_explanation">
         <h4>
