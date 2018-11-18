@@ -12,5 +12,6 @@
   </div>
 </div>
 <%= render partial: "posts/post", collection: @brewery_thread.posts.includes(:user).sorted %>
-
-<%= render partial: "posts/form" %>
+<% if session[:user_id] %>
+  <%= render partial: "posts/form" %>
+<% end %>
