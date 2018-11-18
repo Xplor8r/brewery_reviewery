@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :b_user, only: [:show, :update, :edit, :destroy]
 
   def show
-    redirect_to_root
+    @brewery_threads = BreweryThread.where(user: @user).sorted.includes(:user, :brewery_state)
   end
 
   def index

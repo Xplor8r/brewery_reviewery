@@ -19,14 +19,14 @@
 
   <div class="form-group">
     <%= f.label :brewery %>
-    <%= f.text_field :brewery, placeholder: "Brewery name", class: "form-control" %>
+    <%= f.text_field :brewery, placeholder: "Brewery name:", class: "form-control" %>
   </div>
 
   <% if local_assigns.fetch(:posts, true) %>
     <%= f.fields_for :posts do |p| %>
       <div class="form-group">
         <%= p.label :body, "Your Brewery Review" %>
-        <%= p.text_area :body, placeholder: "Please give your personal review of this brewery.", rows: 10, class: "form-control" %>
+        <%= p.text_area :body, placeholder: "Please give your personal review of this brewery...", rows: 10, class: "form-control" %>
       </div>
     <% end %>
   <% end %>
@@ -38,5 +38,4 @@
       <%= f.button "Update Thread", class: "btn btn-primary" %>
     <% end %>
   </div>
-  <img src="/images/beer1.jpg" alt="picture of a beer">
 <% end %>

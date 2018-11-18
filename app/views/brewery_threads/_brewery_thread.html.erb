@@ -9,7 +9,7 @@
          
           <div class="brewery-thread-details">
             <%= brewery_state_link(brewery_thread.brewery_state) %>
-            • Posted <%= time_ago_in_words(brewery_thread.created_at) + ' ago' %> by <%= author_link(brewery_thread.user.name) %>
+            • Posted <%= time_ago_in_words(brewery_thread.created_at) + ' ago' %> by <%= user_link(brewery_thread.user) %>
           </div>
           <p class="text-muted"><%= truncate(brewery_thread.posts.first.body, length: 200) %></p>
         </div>
