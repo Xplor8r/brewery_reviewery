@@ -24,11 +24,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <div class="navbar-collapse collapse">
                 <ul class="navbar-nav mr-auto">
-                  <li class="nav-item nav-link"><%= link_to "Community", root_path %></li>
+                  <li class="nav-item nav-link"><%= brewery_link_to root_path do %>Community<% end %></li>
                   <% if current_user %>
-                    <li class="nav-item nav-link"><%= link_to "Hello, #{current_user.name}!", author_brewery_threads_path(current_user.name) %></li>
+                    <li class="nav-item nav-link"><%= brewery_link_to author_brewery_threads_path(current_user.name) do%>Hello, <%= current_user.name %>!<% end %></li>
                     <li class="nav-item nav-link"><%= link_to "Log Out", logout_path, method: :delete %></li>
-                    <li class="nav-item nav-link"><%= link_to 'Make a New Review', new_brewery_thread_path %></li>
+                    <li class="nav-item nav-link"><%= brewery_link_to new_brewery_thread_path do %>Make a New Review<% end %> </li>
                     <% else %>
                     <li class="nav-item nav-link"><%= link_to "Sign Up", new_user_path %></li>
                     <li class="nav-item nav-link"><%= link_to "Log In", login_path %></li>
@@ -45,21 +45,21 @@
                 <div class="card card-body">
                   <div class="brewery-thread-filters">
                     <h5><strong>Filters</strong></h5>
-                    <div><%= link_to "All Threads", brewery_threads_path %></div>
+                    <div><%= brewery_link_to brewery_threads_path, exact: true do %>All Reviews<% end %></div>
                     <% if current_user %>
-                      <div><%= link_to "Your Brewery Threads", author_brewery_threads_path(current_user.name) %></div>
-                    <% end %>
-                </div>
-                <hr />
-
-                <div class="brewery-thread-filters">
-                  <h6><strong>By State</strong></h6>
-                  <div><%= link_to "All", brewery_threads_path %></div>
-                    <% BreweryState.sorted.each do |state| %>
-                      <div><%= brewery_state_link(state) %></div>
+                      <div><%= brewery_link_to author_brewery_threads_path do %>Your Brewery Reviews<% end %></div>
                     <% end %>
                   </div>
-                </div>
+                  <hr />
+
+                  <div class="brewery-thread-filters">
+                    <h6><strong>By State</strong></h6>
+                    <div><%= brewery_link_to brewery_threads_path, exact: true do %>All<% end %></div>
+                      <% BreweryState.sorted.each do |state| %>
+                        <div><%= brewery_link_to brewery_state_brewery_threads_path(state) do %><%= state.name %><% end %></div> 
+                      <% end %>
+                    </div>
+                  </div>
               </div>
 
               <div class="col-md-9 mb-3">

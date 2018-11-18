@@ -8,6 +8,7 @@ div #center {
   margin: auto;
   width: 50%;
 }
+
 img {
   padding-top:  30px;
 
@@ -104,12 +105,16 @@ footer {
   text-align: center;
 }
 
-
-  .brewery-thread-filters {
-    a {
-      color: #555;
-    }
+.brewery-thread-filters {
+  a {
+    color: #555;
   }
+
+  .active {
+    color: #a98747;
+    font-weight: bolder;
+  }
+}
 
   .brewery-thread {
     margin-bottom: -20px;
@@ -129,7 +134,7 @@ footer {
   .brewery-thread-filters a {
     color: #555555;
     display: block;
-  
+
     &:hover {
       color: #222222;
       font-weight: bold;
