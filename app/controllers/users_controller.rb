@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    redirect_to_root
+    redirect_to root_path
   end
 
   def new
@@ -18,10 +18,10 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to root_path
     else
       flash[:message] = "You must give a valid name and a unique email."
-      render :new
+      redirect_to new_user_path
     end
   end
 
