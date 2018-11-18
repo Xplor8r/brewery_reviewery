@@ -4,4 +4,8 @@ module PostsHelper
        link_to state.name, brewery_state_brewery_threads_path(state)
     end
 
+    def author_link(author)
+        link_to author, author_brewery_threads_path(author)
+    end
+
 end

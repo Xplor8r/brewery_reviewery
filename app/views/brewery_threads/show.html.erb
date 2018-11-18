@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-md-12">
-    <h3> <%= @brewery_thread.brewery %></h3>
+    
+    <h4> <%= @brewery_thread.brewery %></h4>
     <% if is_admin_or_author?(@brewery_thread) %>
       <%= link_to "Edit this thread", edit_brewery_thread_path(@brewery_thread), class: "text-muted", title: "Edit this Thread" %>
     <% end %>
