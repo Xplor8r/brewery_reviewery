@@ -1,5 +1,10 @@
 <div>
   <h3>Log In</h3>
+  <div id="error_explanation">
+    <% if flash[:message] %>
+      <h4><%= flash[:message] %></h4>
+    <% end %>
+  </div>
   <%= form_for login_path, method: :post do |f| %>
     <% if @user.errors.any? %>
       <div id="error_explanation">

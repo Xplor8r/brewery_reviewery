@@ -1,5 +1,10 @@
 <div>
   <h3>Sign Up</h3>
+  <div id="error_explanation">
+    <% if flash[:message] %>
+      <h4><%= flash[:message] %></h4>
+    <% end %>
+  </div>
   <%= form_for @user, controller: 'users', action: 'create' do |f| %>
     <% if @user.errors.any? %>
       <div id="error_explanation">
