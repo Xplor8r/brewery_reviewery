@@ -1,39 +1,36 @@
-<h3>Log In</h3>
-<%= form_for @user, method: :post do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h4>
-        <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
-      </h4>
+<div>
+  <h3>Log In</h3>
+  <%= form_for login_path, method: :post do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h4>
+          <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
+        </h4>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-  <div class="form-group col">
-    <div>
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "form-control" %>
-    </div><br>
+    <div class="form-group col">
+      <div>
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
+      </div><br>
 
-    <div>
-        <%= f.label :email %>
-        <%= f.text_field :email, class: "form-control" %>
-    </div><br>
+      <div class="form-group">
+        <%= f.label :password, "Enter your password" %>
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+    
+      <div class="actions">
+        <%= f.submit "Sign In", class: "btn btn-primary" %>
+      </div>
+    <% end %>
 
-    <div class="form-group">
-      <%= f.label :password, "Enter your password" %>
-      <%= f.password_field :password, class: "form-control" %>
-    </div>
-  
-    <div class="actions">
-      <%= f.submit "Sign In", class: "btn btn-primary" %>
-    </div>
-  <% end %>
-
-<p><%= link_to('Log in with Google!', '/auth/google_oauth2') %></p>
-<img src="/images/beer1.jpg" alt="picture of a beer">
+  <p><%= link_to('Log in with Google!', '/auth/google_oauth2') %></p>
+  <img src="/images/beer1.jpg" alt="picture of a beer">
+</div>

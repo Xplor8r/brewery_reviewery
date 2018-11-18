@@ -1,7 +1,8 @@
 class BreweryThreadsController < ApplicationController
+  before_action :current_user, only: [:author, :participant, :new, :create]
   before_action :b_thread, only: [:show, :edit, :update]
   before_action :require_admin_or_author_for_thread!, only: [:edit, :update]
-  before_action :current_user, only: [:author, :participant, :new, :create]
+
 
   def index
     @brewery_threads = BreweryThread.sorted.includes(:user, :brewery_state)

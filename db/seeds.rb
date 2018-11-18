@@ -58,7 +58,7 @@ User.create(name: "Jim Morrison", email: "morrison@email.com", password: "12345"
 User.create(name: "Charles Bukowski", email: "bukowski@email.com", password: "12345")
 User.create(name: "Ernest Hemingway", email: "hemingway@email.com", password: "12345")
 User.create(name: "Dean Martin", email: "martin@email.com", password: "12345")
-User.create(name: "Michael Pieschel", email: "mpieschel39@gmail.com", password: "12345")
+User.create(name: "Mike", email: "mike@email.com", password: "12345")
 User.create(name: "Troll", email: "troll@troll.com", password: "12345")
 
 BreweryThread.create(brewery_state_id: 5, user_id: 10, brewery: "Stone Brewing Co.")

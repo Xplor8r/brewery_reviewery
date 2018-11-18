@@ -1,45 +1,47 @@
-<h3>Sign Up</h3>
-<%= form_for @user, controller: 'users', action: 'create' do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h4>
-        <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
-      </h4>
+<div>
+  <h3>Sign Up</h3>
+  <%= form_for @user, controller: 'users', action: 'create' do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h4>
+          <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
+        </h4>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div class="col form-group">
+      <div>
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
+      </div><br>
+
+      <div>
+          <%= f.label :email %>
+          <%= f.text_field :email, class: "form-control" %>
+      </div><br>
+
+      <h6>Check box if you are an admin user.</h6>
+      <div>
+        <%= f.label :admin %>
+        <%= f.check_box :admin %>
+      </div>
+
+      <div>
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control" %>
+      </div><br>
+      <div class="actions">
+        <%= f.submit "Sign Up", class: "btn btn-primary" %>
     </div>
+
+
   <% end %>
-  
-  <div class="col form-group">
-    <div>
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "form-control" %>
-    </div><br>
-
-    <div>
-        <%= f.label :email %>
-        <%= f.text_field :email, class: "form-control" %>
-    </div><br>
-
-    <h6>Check box if you are an admin user.</h6>
-    <div>
-      <%= f.label :admin %>
-      <%= f.check_box :admin %>
-    </div>
-
-    <div>
-      <%= f.label :password %>
-      <%= f.password_field :password, class: "form-control" %>
-    </div><br>
-    <div class="actions">
-      <%= f.submit "Sign Up", class: "btn btn-primary" %>
-  </div>
-
-
-<% end %>
-<p><%= link_to('Sign up with Google!', '/auth/google_oauth2') %></p>
-<img src="/images/beer2.jpg" alt="picture of a beer">
+  <p><%= link_to('Sign up with Google!', '/auth/google_oauth2') %></p>
+  <img src="/images/beer2.jpg" alt="picture of a beer">
+</div>

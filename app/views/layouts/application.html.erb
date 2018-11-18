@@ -27,11 +27,11 @@
                   <li class="nav-item nav-link"><%= link_to "Community", root_path %></li>
                   <% if current_user %>
                     <li class="nav-item nav-link"><%= link_to "Hello, #{current_user.name}!", author_brewery_threads_path(current_user.name) %></li>
-                    <li class="nav-item nav-link"><%= link_to "Log Out", signout_path, method: :delete %></li>
+                    <li class="nav-item nav-link"><%= link_to "Log Out", logout_path, method: :delete %></li>
                     <li class="nav-item nav-link"><%= link_to 'Make a New Review', new_brewery_thread_path %></li>
                     <% else %>
                     <li class="nav-item nav-link"><%= link_to "Sign Up", new_user_path %></li>
-                    <li class="nav-item nav-link"><%= link_to "Sign In", signin_path %></li>
+                    <li class="nav-item nav-link"><%= link_to "Log In", login_path %></li>
                     <li class="nav-item nav-link"><%= link_to 'Make a New Review', new_user_path %></li>
                     <% end %>
                 </ul>
@@ -48,7 +48,7 @@
                     <div><%= link_to "All Threads", brewery_threads_path %></div>
                     <% if current_user %>
                       <div><%= link_to "Your Brewery Threads", author_brewery_threads_path(current_user.name) %></div>
-                      <div><%= link_to "Participating In", participant_brewery_threads_path %></div>
+                      <div><%= link_to "Participating In", participant_brewery_threads_path(current_user.name) %></div>
                     <% end %>
                 </div>
                 <hr />
