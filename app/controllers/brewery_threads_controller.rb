@@ -1,5 +1,5 @@
 class BreweryThreadsController < ApplicationController
-  before_action :current_user, only: [:author, :participant, :new, :create]
+  before_action :current_user, only: [:author, :new, :create]
   before_action :b_thread, only: [:show, :edit, :update]
   before_action :require_admin_or_author_for_thread!, only: [:edit, :update]
 
@@ -10,11 +10,6 @@ class BreweryThreadsController < ApplicationController
 
   def author
     @brewery_threads = BreweryThread.where(user: current_user).sorted.includes(:user, :brewery_state)
-    render action: :index
-  end
-
-  def participant
-    @brewery_threads = BreweryThread.includes(:user, :brewery_state).joins(:posts).where(posts: { user_id: current_user.id }).distinct(posts: :id).sorted
     render action: :index
   end
 
