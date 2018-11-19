@@ -1,7 +1,7 @@
 <% if @user == current_user %>
-    <h2>Your Reviews</h2>
+    <h2 class="bg-light">Your Reviews</h2>
 <% else %>
-    <h2>Reviews by <%= @user.name %></h2>
+    <h2 class="bg-light">Reviews by <%= @user.name %></h2>
 <% end %>
 
 <%= render partial: "brewery_threads/brewery_thread", collection: @brewery_threads %>

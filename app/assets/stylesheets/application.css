@@ -11,10 +11,8 @@ div #center {
 
 img {
   padding-top:  30px;
-
   width: 100%;
   max-width: 100%;
-
 }
 
 .right {
@@ -84,6 +82,7 @@ p  {
 }
 
 .nav-link {
+
   border-right-width:  2px;
   border-right-style: solid;
   border-right-color: #cccc;
