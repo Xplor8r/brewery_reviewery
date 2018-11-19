@@ -104,13 +104,8 @@ footer {
   text-align: center;
 }
 
-.brewery-thread-filters {
-  a {
+.brewery-thread-filters a {
     color: #555;
-    
-  }
-
-
 }
 
 .active {
@@ -119,18 +114,18 @@ footer {
   .brewery-thread {
     margin-bottom: -20px;
   
-    h4 {
-      margin-bottom: 4px;
-  
-      a {
-        color: #190101;
-        font-size: 16px;
-        font-weight: normal;
-
-      }
-    }
+    
   }
-  
+  .brewery-thread h4 {
+    margin-bottom: 4px;
+
+    
+  }
+  .brewery-thread h4 a {
+    color: #190101;
+    font-weight: normal;
+  }
+
   .brewery-thread-filters a {
     color: #555555;
     display: block;

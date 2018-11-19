@@ -2,11 +2,11 @@
     <div class="brewery-thread">
       <div class="row">
 
-        <div class="col"> 
-          <%= link_to brewery_thread_path(brewery_thread) do %>
-            <h4><%= brewery_thread.brewery %></h4>
-          <% end %>
-         
+        <div class="col">
+          <h4>
+          <%= link_to brewery_thread_path(brewery_thread) do %><%= brewery_thread.brewery %><% end %>
+          </h4>
+
           <div class="brewery-thread-details">
             <%= brewery_state_link(brewery_thread.brewery_state) %>
             • Posted <%= time_ago_in_words(brewery_thread.created_at) + ' ago' %> by <%= user_link(brewery_thread.user) %>
