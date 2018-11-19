@@ -10,6 +10,7 @@ class BreweryThreadsController < ApplicationController
 
   def author
     @brewery_threads = BreweryThread.where(user: current_user).sorted.includes(:user, :brewery_state)
+    @current_user = current_user
     render action: :index
   end
 
