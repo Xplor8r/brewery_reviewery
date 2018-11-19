@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     helper_method :current_user
 
-
-
     def logged_in?
       !!current_user
     end
@@ -45,6 +43,7 @@ class ApplicationController < ActionController::Base
       end
   
       def redirect_to_root
-        redirect_to root_path, alert: "Hey, you can't do that!"
+        flash[:message] "Hey, you can't do that!"
+        redirect_to root_path 
       end 
 end

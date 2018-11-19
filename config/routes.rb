@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :users
   resources :brewery_threads, path: :threads do
     collection do
-      get :author
       get "brewery_state/:id", to: "brewery_states#index", as: :brewery_state
     end
     resources :posts, path: :posts

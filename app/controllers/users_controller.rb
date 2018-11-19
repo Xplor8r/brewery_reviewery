@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      flash[:message] = "You must give a valid name, a unique email and a valid password."
+      flash[:message] = "You must give a valid name, email and password."
       redirect_to new_user_path
     end
   end
