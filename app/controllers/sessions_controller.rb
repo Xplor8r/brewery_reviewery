@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
           redirect_to user_path(@user)
         else
           flash[:message] = "No one here by that name. Please sign up."
-          redirect_to signup_path
+          redirect_to new_user_url
         end
     end
     
