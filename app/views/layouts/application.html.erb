@@ -24,7 +24,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <div class="navbar-collapse collapse">
                 <ul class="navbar-nav mr-auto">
-                  <li class="nav-item nav-link"><%= brewery_link_to root_path do %>Community<% end %></li>
+                  <li class="nav-item nav-link"><%= link_to "Community", root_path %></li>
                   <% if current_user %>
                     <li class="nav-item nav-link"><%= brewery_link_to user_path(current_user.id) do %>Hello, <%= current_user.name %>!<% end %></li>
                     <li class="nav-item nav-link"><%= link_to "Log Out", logout_path, method: :delete %></li>

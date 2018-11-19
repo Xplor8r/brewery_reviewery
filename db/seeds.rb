@@ -1,9 +1,3 @@
-BreweryState.delete_all
-User.delete_all
-BreweryThread.delete_all
-Post.delete_all
-
-
 BreweryState.create(name: "Alabama")
 BreweryState.create(name: "Alaska")
 BreweryState.create(name: "Arizona")
@@ -14,7 +8,6 @@ BreweryState.create(name: "Connecticut")
 BreweryState.create(name: "Delaware")
 BreweryState.create(name: "Florida")
 BreweryState.create(name:  "Georgia")
-
 BreweryState.create(name:  "Hawaii")
 BreweryState.create(name:  "Idaho")
 BreweryState.create(name:  "Illinois")
@@ -25,7 +18,6 @@ BreweryState.create(name:  "Kentucky")
 BreweryState.create(name:  "Louisiana")
 BreweryState.create(name:  "Maine")
 BreweryState.create(name:  "Maryland")
-
 BreweryState.create(name:  "Massachusetts")
 BreweryState.create(name:  "Michigan")
 BreweryState.create(name:  "Minnesota")
@@ -36,7 +28,6 @@ BreweryState.create(name:  "Nebraska")
 BreweryState.create(name:  "Nevada")
 BreweryState.create(name:  "New Hampshire")
 BreweryState.create(name:  "New Jersey")
-
 BreweryState.create(name:  "New Mexico")
 BreweryState.create(name:  "New York")
 BreweryState.create(name:  "North Carolina")
@@ -47,7 +38,6 @@ BreweryState.create(name:  "Oregon")
 BreweryState.create(name:  "Pennsylvania")
 BreweryState.create(name:  "Rhode Island")
 BreweryState.create(name:  "South Carolina")
-
 BreweryState.create(name:  "South Dakota")
 BreweryState.create(name:  "Tennessee")
 BreweryState.create(name:  "Texas")
@@ -109,7 +99,7 @@ Post.create(brewery_thread_id: 2, user_id: 4, body: "Aaaahhh, you used to be abl
 Post.create(brewery_thread_id: 7, user_id: 1, body: "Mmmmm...Beer. Doh!")
 Post.create(brewery_thread_id: 8, user_id: 3, body: "This place is ssoooo PC!")
 Post.create(brewery_thread_id: 9, user_id: 7, body: "I don't know how many bottles of beer I have consumed while waiting for things to get better.")
-Post.create(brewery_thread_id: 14, user_id: 12, body: "I’ve only been in love with a beer bottle and a mirror.")
+Post.create(brewery_thread_id: 14, user_id: 12, body: "I’ve only been in love with a beer bottle and a mirror. Originally, I didn't even plan on stoping at Browning's while I visited Louisville. However, I stoped by with my girlfriend and her family for lunch since we were already downtown. Just so you know if you are looking for the place, it's located within the Louisville Bat's ballpark complex. When I called for directions they failed to mention that they were located within a very easily found landmark. That said, I was resonably impressed with Browning's. The atmosphere has a slightly upscale trendy kind of feel, almost like your favorite steakhouse with craftbeer.")
 Post.create(brewery_thread_id: 16, user_id: 9, body: "I have respect for beer. I have respect for Florida. Love to be here. It's so great to be here. Really, it is... so great... slurp.")
 Post.create(brewery_thread_id: 17, user_id: 7, body: "The craft brewery was launched by award-winning brewer Richard Johnson in 2003, and beers are produced in small batches using premium raw materials and a strict adherence to the Rheinheitsgebot, a 1516 German beer purity law.")
 Post.create(brewery_thread_id: 1, user_id: 11, body: "You should quit drinking.")

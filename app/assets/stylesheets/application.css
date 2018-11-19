@@ -107,14 +107,15 @@ footer {
 .brewery-thread-filters {
   a {
     color: #555;
+    
   }
 
-  .active {
-    color: #a98747;
-    font-weight: bolder;
-  }
+
 }
 
+.active {
+  font-weight: bolder;
+}
   .brewery-thread {
     margin-bottom: -20px;
   
