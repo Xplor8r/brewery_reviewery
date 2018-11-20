@@ -5,7 +5,7 @@ module PostsHelper
     end
 
     def user_link(user)
-        link_to user.name, user_path(user.id)
+        link_to user.name, user_path(user)
     end
 
 end

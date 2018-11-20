@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   private
     def b_user
-      @user = User.find(params[:id])
+      @user = User.friendly.find(params[:id])
     end
 
     def user_params
