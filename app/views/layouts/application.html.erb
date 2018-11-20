@@ -26,7 +26,7 @@
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item nav-link"><%= link_to "Community", root_path %></li>
                   <% if current_user %>
-                    <li class="nav-item nav-link"><%= brewery_link_to user_path(current_user.id) do %>Hello, <%= current_user.name %>!<% end %></li>
+                    <li class="nav-item nav-link"><%= brewery_link_to user_path(current_user) do %>Hello, <%= current_user.name %>!<% end %></li>
                     <li class="nav-item nav-link"><%= link_to "Log Out", logout_path, method: :delete %></li>
                     <li class="nav-item nav-link"><%= brewery_link_to new_brewery_thread_path do %>Make a New Review<% end %></li>
                     <% else %>
@@ -47,7 +47,7 @@
                     <h5><strong>Filters</strong></h5>
                     <div><%= brewery_link_to brewery_threads_path, exact: true do %>All Reviews<% end %></div>
                     <% if current_user %>
-                      <div><%= brewery_link_to user_path(current_user.id) do %>Your Brewery Reviews<% end %></div>
+                      <div><%= brewery_link_to user_path(current_user) do %>Your Brewery Reviews<% end %></div>
                     <% end %>
                   </div>
                   <hr />
