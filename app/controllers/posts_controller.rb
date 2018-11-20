@@ -8,8 +8,8 @@ class PostsController < ApplicationController
   def create
     @post = @brewery_thread.posts.new(post_params)
     @post.user_id = current_user.id
-
     if @post.save
+      flash[:message] = "Post Created Successfully!"
       redirect_to brewery_thread_path(@brewery_thread, anchor: "post_#{@post.id}")
     else
       render template: "brewery_threads/show"
@@ -21,6 +21,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
+      flash[:message] = "Post Updated Successfully!"
       redirect_to brewery_thread_path(@brewery_thread)
     else
       render action: :edit
