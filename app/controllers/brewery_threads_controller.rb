@@ -22,6 +22,7 @@ class BreweryThreadsController < ApplicationController
     @brewery_thread = current_user.brewery_threads.new(brewery_thread_params)
     @brewery_thread.posts.each { |post| post.user_id = current_user.id }
     if @brewery_thread.save
+      flash[:message] =  "Thread Created Successfully."
       redirect_to brewery_thread_path(@brewery_thread)
     else
       render action: :new
@@ -33,7 +34,8 @@ class BreweryThreadsController < ApplicationController
 
   def update
     if @brewery_thread.update(brewery_thread_params)
-      redirect_to brewery_thread_path(@brewery_thread), notice: "Thread Updated Successfully."
+      flash[:message] =  "Thread Updated Successfully."
+      redirect_to brewery_thread_path(@brewery_thread)
     else
       render action: :edit
     end
