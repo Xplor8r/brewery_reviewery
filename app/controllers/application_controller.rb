@@ -19,19 +19,19 @@ class ApplicationController < ActionController::Base
   
     def require_admin_or_author_for_post!
       unless is_admin_or_author?(@post)
-        please_log_in
+        redirect_to_root
       end
     end
   
     def require_admin_or_author_for_thread!
       unless is_admin_or_author?(@brewery_thread)
-        please_log_in
+        redirect_to_root
       end
     end
 
     private
       def please_log_in
-        if !logged_in?
+        unless logged_in?
           redirect_to root_path
         end
       end
