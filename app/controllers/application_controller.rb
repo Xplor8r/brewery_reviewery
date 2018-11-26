@@ -4,10 +4,6 @@ class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     helper_method :current_user
 
-    def logged_in?
-      !!current_user
-    end
-
 
     def is_admin_or_author?(object)
       is_admin? || object.user == current_user
@@ -30,11 +26,6 @@ class ApplicationController < ActionController::Base
     end
 
     private
-      def please_log_in
-        unless logged_in?
-          redirect_to root_path
-        end
-      end
 
       def current_user
         if session[:user_id]
