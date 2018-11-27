@@ -24,14 +24,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <div class="navbar-collapse collapse">
                 <ul class="navbar-nav mr-auto">
-                  <li class="nav-item nav-link"><%= link_to "Community", root_path %></li>
+                  <li class="nav-item nav-link"><%= brewery_link_to root_path, exact: true do %>Community<% end %></li>
                   <% if current_user %>
                     <li class="nav-item nav-link"><%= brewery_link_to user_path(current_user) do %>Hello, <%= current_user.name %>!<% end %></li>
                     <li class="nav-item nav-link"><%= link_to "Log Out", logout_path, method: :delete %></li>
                     <li class="nav-item nav-link"><%= brewery_link_to new_brewery_thread_path do %>Make a New Review<% end %></li>
                     <% else %>
-                    <li class="nav-item nav-link"><%= link_to "Sign Up", new_user_path %></li>
-                    <li class="nav-item nav-link"><%= link_to "Log In", login_path %></li>
+                    <li class="nav-item nav-link"><%= brewery_link_to new_user_path, exact: true do %>Sign Up<% end %></li>
+                    <li class="nav-item nav-link"><%= brewery_link_to login_path, exact: true do %>Log In<% end %></li>
                     <li class="nav-item nav-link"><%= link_to 'Make a New Review', new_user_path %></li>
                     <% end %>
                 </ul>
@@ -66,6 +66,11 @@
                 <div class="card card-body">
                 <h1>Brewery Reviewery</h1>
                 <hr />
+                  <div id="error_explanation">
+                    <% if flash[:message] %>
+                      <h4><%= flash[:message] %></h4>
+                    <% end %>
+                  </div>
                   <%= yield %>
                 </div>
               </div>
