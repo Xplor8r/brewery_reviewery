@@ -13,13 +13,13 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :brewery_state_id, "Choose a State" %>
-    <%= f.collection_select :brewery_state_id, BreweryState.sorted, :id, :name, {include_blank: "Pick a state..."}, {autofocus: true, class: "form-control"} %>
+    <%= f.label :brewery %>
+    <%= f.text_field :brewery, placeholder: "Brewery name:", class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :brewery %>
-    <%= f.text_field :brewery, placeholder: "Brewery name:", class: "form-control" %>
+    <%= f.label :brewery_state_id, "Choose a State" %>
+    <%= f.collection_select :brewery_state_id, BreweryState.sorted, :id, :name, {include_blank: "Pick a state..."}, class: "form-control" %>
   </div>
 
   <% if local_assigns.fetch(:posts, true) %>
