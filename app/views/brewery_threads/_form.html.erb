@@ -2,7 +2,7 @@
 
   <% if @brewery_thread.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@brewery_thread.errors.count, "error") %> prohibited this thread from being saved:</h2>
+      <h5><%= pluralize(@brewery_thread.errors.count, "error") %> prohibited this thread from being saved:</h5>
 
       <ul>
       <% @brewery_thread.errors.full_messages.each do |message| %>

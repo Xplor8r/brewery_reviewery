@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
           session[:user_id] = @user.id
           redirect_to user_path(@user)
         else
-          flash[:message] = "No one here by that name. Please sign up."
+          flash[:error] = "No one here by that name. Please sign up."
           redirect_to new_user_url
         end
     end

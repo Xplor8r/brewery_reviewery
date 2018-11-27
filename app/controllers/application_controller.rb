@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
       end
   
       def redirect_to_root
-        flash[:message] = "Hey, you can't do that!"
+        flash[:error] = "Hey, you can't do that!"
         redirect_to root_path 
       end 
 end

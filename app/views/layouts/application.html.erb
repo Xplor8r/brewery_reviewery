@@ -66,11 +66,18 @@
                 <div class="card card-body">
                 <h1>Brewery Reviewery</h1>
                 <hr />
+
                   <div id="error_explanation">
-                    <% if flash[:message] %>
-                      <h4><%= flash[:message] %></h4>
+                    <% if flash[:error] %>
+                      <h6><%= flash[:error] %></h6>
                     <% end %>
                   </div>
+                  <div id="message">
+                    <% if flash[:message] %>
+                    <h6><%= flash[:message] %></h6>
+                    <% end %>
+                  </div>  
+
                   <%= yield %>
                 </div>
               </div>
