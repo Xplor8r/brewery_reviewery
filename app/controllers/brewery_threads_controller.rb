@@ -45,6 +45,9 @@ class BreweryThreadsController < ApplicationController
 
     def b_thread
       @brewery_thread = BreweryThread.friendly.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:message] = "Sorry, something went wrong."
+      redirect_to root_path 
     end
 
     def brewery_thread_params

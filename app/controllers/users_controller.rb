@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :b_user, only: [:show, :destroy]
+  before_action :b_user, only: [:show]
 
   def show
     @brewery_threads = BreweryThread.where(user: @user).sorted.includes(:user, :brewery_state)
@@ -28,6 +28,9 @@ class UsersController < ApplicationController
   private
     def b_user
       @user = User.friendly.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:message] = "Sorry, something went wrong."
+      redirect_to root_path 
     end
 
     def user_params
