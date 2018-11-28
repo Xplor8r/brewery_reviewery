@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
           session[:user_id] = @user.id
           redirect_to user_path(@user)
         else
-          flash[:error] = "Sorry, that email and password don't match our records. Please sign up."
+          flash[:error] = "Sorry, that email and password doesn't match our records. Please sign up."
           redirect_to new_user_url
         end
     end
