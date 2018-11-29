@@ -8,4 +8,6 @@
     <div>No Reviews here. <%= brewery_link_to new_brewery_thread_path do %>Make a new review<% end %> or check out <%= link_to "the latest brewery reviews", brewery_threads_path %> instead?</div>
 <% else %>
 <%= render partial: "brewery_threads/brewery_thread", collection: @brewery_threads %>
+
+<%= link_to "See states", users_states_path(@user) %>
 <% end %>

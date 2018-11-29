@@ -7,7 +7,7 @@ class BreweryStatesController < ApplicationController
       @brewery_threads = @brewery_threads.sorted.includes(:user, :brewery_state)
       render "brewery_threads/index"
     end
-  
+ 
     private
       def b_state
         @brewery_state = BreweryState.friendly.find(params[:id])

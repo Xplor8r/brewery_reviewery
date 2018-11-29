@@ -1,0 +1,6 @@
+<%= @user.name %> has drank beer in the following states: 
+<ul>
+<% @user.brewery_states.uniq.each do |state| %>
+    <li><%= brewery_state_link(state) %></li>
+<% end %>
+</ul>

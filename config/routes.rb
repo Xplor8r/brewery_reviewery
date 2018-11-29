@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get '/auth/google_oauth2/callback' => 'sessions#google'
   post '/auth/google_oauth2/callback' => 'sessions#create'
+  get '/users/:id/states', to: "users#states", as: :users_states
   resources :users
   resources :brewery_threads, path: :threads do
     collection do

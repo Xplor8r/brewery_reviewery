@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
-  before_action :b_user, only: [:show]
+  before_action :b_user, only: [:show, :states]
 
   def show
     @brewery_threads = BreweryThread.where(user: @user).sorted.includes(:user, :brewery_state)
+  end
+
+  def states
+
   end
 
   def index
