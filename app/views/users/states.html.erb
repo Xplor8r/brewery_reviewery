@@ -1,6 +1,8 @@
-<%= @user.name %> has drank beer in the following states: 
+<h4><% if @user == current_user %>You have <% else %><%= @user.name %> has <% end %>drank beer in the following states: </h4>
+<div>
 <ul>
 <% @user.brewery_states.uniq.each do |state| %>
     <li><%= brewery_state_link(state) %></li>
 <% end %>
 </ul>
+</div>
