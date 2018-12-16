@@ -10,7 +10,10 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     if @post.save
       flash[:message] = "Post Created Successfully!"
-      redirect_to brewery_thread_path(@brewery_thread, anchor: "post_#{@post.id}")
+      respond_to do |format|
+        format.html {redirect_to brewery_thread_path(@brewery_thread, anchor: "post_#{@post.id}")}
+        format.json {render json: @post}
+      end
     else
       render template: "brewery_threads/show"
     end

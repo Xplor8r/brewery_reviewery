@@ -10,11 +10,10 @@ class UsersController < ApplicationController
   end
 
   def states
-
   end
 
   def index
-    redirect_to root_path
+    render "brewery_threads/index"
   end
 
   def new

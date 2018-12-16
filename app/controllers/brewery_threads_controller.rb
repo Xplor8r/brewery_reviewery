@@ -32,7 +32,7 @@ class BreweryThreadsController < ApplicationController
     if @brewery_thread.save
       flash[:message] =  "Thread Created Successfully."
       respond_to do |format|
-        format.html {render :show}
+        format.html {redirect_to brewery_thread_path(@brewery_thread)}
         format.json {render json: @brewery_thread}
       end
     else
