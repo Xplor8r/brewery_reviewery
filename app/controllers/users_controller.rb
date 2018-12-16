@@ -3,6 +3,10 @@ class UsersController < ApplicationController
 
   def show
     @brewery_threads = BreweryThread.where(user: @user).sorted.includes(:user, :brewery_state)
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: @brewery_threads}
+    end
   end
 
   def states
