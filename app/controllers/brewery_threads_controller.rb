@@ -13,6 +13,7 @@ class BreweryThreadsController < ApplicationController
   end
 
   def show
+    @brewery_threads = BreweryThread.all
     @post = Post.new
     @post.user = current_user
     respond_to do |format|
