@@ -1,3 +1,6 @@
+//= require users
+//= require brewery_states
+
 $( document ).on('turbolinks:load', function() {
     attachListeners();
 });
@@ -22,10 +25,13 @@ function attachListeners() {
             $(".thread-header").html(data["brewery"]);
             $(".thread-state").html(data["brewery_state"]["name"]);
             $(".thread-created").html(data["created_at"]);
-            $(".thread-user").html(data["user"]["name"]);
-            $("#post_").empty();
+            const userId = new User(data["user"]).jsFriendlyId();
+            $(".thread-user").html('<a href="/users/' + userId + '"' + ">" + data["user"]["name"] + "</a>");
+
+            $(".thread-posts").empty();
+            $(".js-next").attr("data-id", data["id"]);
             $(".js-previous").attr("data-id", data["id"]);
-            console.log(data)
+            //console.log()
         }); 
     });
     // show previous brewery_thread
@@ -36,11 +42,27 @@ function attachListeners() {
             $(".thread-header").html(data["brewery"]);
             $(".thread-state").html(data["brewery_state"]["name"]);
             $(".thread-created").html(data["created_at"]);
-            $(".thread-user").html(data["user"]["name"]);
-            $("#post_").empty();
+            const userId = new User(data["user"]).jsFriendlyId();
+            $(".thread-user").html('<a href="/users/' + userId + '"' + ">" + data["user"]["name"] + "</a>");
+            $(".thread-posts").empty();
+            $(".js-next").attr("data-id", data["id"]);
             $(".js-previous").attr("data-id", data["id"]);
-            //console.log(data["user"]["name"])
+            console.log( );
         }); 
     });
 }
 
+// class User {
+//     constructor(attributes){
+//         this.name = attributes["name"];
+//     }
+//     jsFriendlyId() {
+//         return this.name.toString().toLowerCase()
+//         .replace(/\s+/g, '-')           // Replace spaces with -
+//         .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+//         .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+//         .replace(/^-+/, '')             // Trim - from start of text
+//         .replace(/-+$/, '');            // Trim - from end of text
+//     }
+    
+// }

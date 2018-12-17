@@ -8,18 +8,15 @@
 
     <p class="thread-details">
       <strong class="thread-state"><%= @brewery_thread.brewery_state.name %></strong>
-      <span class="thread-created">• Posted <%= time_ago_in_words(@brewery_thread.created_at) + ' ago' %></span> by <strong class="thread-user"><%= @brewery_thread.user.name %></strong>
+      <span class="thread-created">• Posted <%= time_ago_in_words(@brewery_thread.created_at) + ' ago' %></span> by <strong class="thread-user"><%= user_link(@brewery_thread.user) %></strong>
     </p>
   </div>
 </div>
-<%= render partial: "posts/post", collection: @brewery_thread.posts.includes(:user).sorted %>
-<% if session[:user_id] %>
-  <%= render partial: "posts/form" %>
-<% end %>
-<% if @brewery_thread.id < @brewery_threads.length %>
-  <a href="" class="js-next" data-id="<%= @brewery_thread.id %>">Next Review</a> <a href="" class="js-previous" data-id="<%= @brewery_thread.id %>">Previous Review</a>
-<% elsif @brewery_thread.id == 1 %>
-  <a href="" class="js-next" data-id="<%= @brewery_thread.id %>">Next Review</a>
-<% else %>
-  <a href="" class="js-previous" data-id="<%= @brewery_thread.id %>">Previous Review</a>
-<% end %>
+<div class="thread-posts"
+  <%= render partial: "posts/post", collection: @brewery_thread.posts.includes(:user).sorted %>
+  <% if session[:user_id] %>
+    <%= render partial: "posts/form" %>
+  <% end %>
+</div>
+<a href="" class="js-next" data-id="<%= @brewery_thread.id %>">Next Review</a> | <a href="" class="js-previous" data-id="<%= @brewery_thread.id %>">Previous Review</a>
+
