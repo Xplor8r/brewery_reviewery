@@ -3,16 +3,15 @@ $( document ).on('turbolinks:load', function() {
     attachListeners();
 });
 
-function attachListeners() {
 
+function attachListeners() {
     $(".js-more").on("click", function(e) {
         e.preventDefault();
-        const id = parseInt($(".js-more").attr("data-id"));
+        var id = parseInt($(".js-more").attr("data-id"));
         $.get("/threads/" + id + ".json", function(data) {
-            console.log(data)
-        });
-        
+            let postBody = data["posts"][0]["body"]
+            console.log(postBody);
+        }); 
     });
-
 }
 

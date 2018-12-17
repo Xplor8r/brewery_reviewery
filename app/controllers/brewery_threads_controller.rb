@@ -17,7 +17,7 @@ class BreweryThreadsController < ApplicationController
     @post.user = current_user
     respond_to do |format|
       format.html {render :show}
-      format.json {render json: @post}
+      format.json {render json: @brewery_thread}
     end
   end
 

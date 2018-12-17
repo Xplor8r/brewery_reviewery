@@ -12,7 +12,10 @@
             • Posted <%= time_ago_in_words(brewery_thread.created_at) + ' ago' %> by <%= user_link(brewery_thread.user) %>
           </div>
           <p class="text-muted" id="brewery_thread-<%= brewery_thread.id %>"><%= truncate(brewery_thread.posts.first.body, length: 150) %>
-          <a href="#" class="js-more" data-id="<%= brewery_thread.id %>">Read more</a></p>
+          <% if brewery_thread.posts.first.body.length > 150 %>
+            <a href="#" class="js-more" data-id="<%= brewery_thread.id %>">Read more</a>
+          <% end %>
+          </p>
         </div>
   
         <div class="col-sm-2">
