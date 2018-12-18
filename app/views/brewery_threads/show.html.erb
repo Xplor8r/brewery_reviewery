@@ -7,7 +7,7 @@
     <% end %>
 
     <p class="thread-details">
-      <strong class="thread-state"><%= @brewery_thread.brewery_state.name %></strong>
+      <strong class="thread-state"><%= brewery_state_link(@brewery_thread.brewery_state) %></strong>
       <span class="thread-created">• Posted <%= time_ago_in_words(@brewery_thread.created_at) + ' ago' %></span> by <strong class="thread-user"><%= user_link(@brewery_thread.user) %></strong>
     </p>
   </div>

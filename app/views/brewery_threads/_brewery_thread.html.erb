@@ -16,8 +16,17 @@
             <a href="#" class="js-more" data-id="<%= brewery_thread.id %>">Read more</a>
           <% end %>
           </p>
+
+          <small><a href="/" class="text-muted js-comments" %>comments</a></small>
+          <div class="show-comments">
+          </div>
+
+          <div class="card-header"> 
+            <div class="post-user"><strong>user</strong><small class="post-created"> commented on  post.created_at</small></div>
+          </div>
+          <div class="card-body"><p class="post-body">post.body</p></div>
+
         </div>
-  
         <div class="col-sm-2">
           <%= link_to brewery_thread_path(brewery_thread), class: "brewery-thread-posts-count" do %>
             <span class="count"><%= brewery_thread.posts_count %></span>

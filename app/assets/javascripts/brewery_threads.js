@@ -1,5 +1,6 @@
 //= require users
 //= require brewery_states
+//= require posts
 
 $( document ).on('turbolinks:load', function() {
     attachListeners();
@@ -22,12 +23,12 @@ function attachListeners() {
         e.preventDefault();
         var nextId = parseInt($(".js-next").attr("data-id")) + 1;
         $.get("/threads/" + nextId + ".json", function(data) {
-            $(".thread-header").html(data["brewery"]);
-            $(".thread-state").html(data["brewery_state"]["name"]);
-            $(".thread-created").html(data["created_at"]);
+            const stateId = new State(data["brewery_state"]).jsFriendlyId();
             const userId = new User(data["user"]).jsFriendlyId();
+            $(".thread-header").html(data["brewery"]);
+            $(".thread-state").html('<a href="/threads/brewery_state/' + stateId + '"' + ">" + data["brewery_state"]["name"] + "</a>");
+            $(".thread-created").html(data["created_at"]);
             $(".thread-user").html('<a href="/users/' + userId + '"' + ">" + data["user"]["name"] + "</a>");
-
             $(".thread-posts").empty();
             $(".js-next").attr("data-id", data["id"]);
             $(".js-previous").attr("data-id", data["id"]);
@@ -39,10 +40,11 @@ function attachListeners() {
         e.preventDefault();
         var previousId = parseInt($(".js-previous").attr("data-id")) - 1;
         $.get("/threads/" + previousId + ".json", function(data) {
-            $(".thread-header").html(data["brewery"]);
-            $(".thread-state").html(data["brewery_state"]["name"]);
-            $(".thread-created").html(data["created_at"]);
+            const stateId = new State(data["brewery_state"]).jsFriendlyId();
             const userId = new User(data["user"]).jsFriendlyId();
+            $(".thread-header").html(data["brewery"]);
+            $(".thread-state").html('<a href="/threads/brewery_state/' + stateId + '"' + ">" + data["brewery_state"]["name"] + "</a>");
+            $(".thread-created").html(data["created_at"]);
             $(".thread-user").html('<a href="/users/' + userId + '"' + ">" + data["user"]["name"] + "</a>");
             $(".thread-posts").empty();
             $(".js-next").attr("data-id", data["id"]);
@@ -50,19 +52,15 @@ function attachListeners() {
             console.log( );
         }); 
     });
-}
 
-// class User {
-//     constructor(attributes){
-//         this.name = attributes["name"];
-//     }
-//     jsFriendlyId() {
-//         return this.name.toString().toLowerCase()
-//         .replace(/\s+/g, '-')           // Replace spaces with -
-//         .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-//         .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-//         .replace(/^-+/, '')             // Trim - from start of text
-//         .replace(/-+$/, '');            // Trim - from end of text
-//     }
-    
-// }
+    $(".js-comments").on("click", function(e){
+        e.preventDefault();
+        console.log(this);
+        $.ajax({
+            method: 'GET',
+            url: this.href + ".json",
+        }).done(function(data){
+
+        })
+    })
+}
