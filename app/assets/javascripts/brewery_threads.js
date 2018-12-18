@@ -52,20 +52,19 @@ function attachListeners() {
             console.log( );
         }); 
     });
-
+    // show comments
     $(".js-comments").on("click", function(e){
         e.preventDefault();
         $.ajax({
             method: 'GET',
             url: this.href + ".json",
         }).done(function(data){
-            console.log(data)
-            const posts = data["posts"]
-            posts.forEach(function(data){
-                const comment = new Post(data);
+            const posts = data["posts"];
+            posts.forEach(function(attributes){
+                console.log(attributes)
+                const comment = new Post(attributes);
                 comment.show();
-           })
-
+            })
         })
     })
 }
