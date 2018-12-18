@@ -55,11 +55,15 @@ function attachListeners() {
 
     $(".js-comments").on("click", function(e){
         e.preventDefault();
-        console.log(this);
         $.ajax({
             method: 'GET',
             url: this.href + ".json",
         }).done(function(data){
+            const posts = data["posts"]
+            posts.forEach(function(data){
+                const comment = new Post(data);
+                console.log(comment.show());
+           })
 
         })
     })

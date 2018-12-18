@@ -17,14 +17,10 @@
           <% end %>
           </p>
 
-          <small><a href="/" class="text-muted js-comments" %>comments</a></small>
-          <div class="show-comments">
+          <small><a href="/threads/<%= brewery_thread.id %>" class="text-muted js-comments">comments</a></small>
+          
+          <div class=".show-comments-<%= brewery_thread.id %>">
           </div>
-
-          <div class="card-header"> 
-            <div class="post-user"><strong>user</strong><small class="post-created"> commented on  post.created_at</small></div>
-          </div>
-          <div class="card-body"><p class="post-body">post.body</p></div>
 
         </div>
         <div class="col-sm-2">
