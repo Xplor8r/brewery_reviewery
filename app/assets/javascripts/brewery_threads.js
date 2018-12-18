@@ -59,10 +59,11 @@ function attachListeners() {
             method: 'GET',
             url: this.href + ".json",
         }).done(function(data){
+            console.log(data)
             const posts = data["posts"]
             posts.forEach(function(data){
                 const comment = new Post(data);
-                console.log(comment.show());
+                comment.show();
            })
 
         })
