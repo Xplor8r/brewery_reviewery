@@ -11,7 +11,7 @@
             <%= brewery_state_link(brewery_thread.brewery_state) %>
             • Posted <%= time_ago_in_words(brewery_thread.created_at) + ' ago' %> by <%= user_link(brewery_thread.user) %>
           </div>
-          <p class="text-muted" id="brewery_thread-<%= brewery_thread.id %>"><%= truncate(brewery_thread.posts.first.body, length: 150) %>
+          <p class="text-muted" id="brewery_thread-<%= brewery_thread.id %>"><%= truncate(brewery_thread.posts.first.body, length: 150) %></p>
           <% if brewery_thread.posts.first.body.length > 150 %>
             <a href="/threads/<%= brewery_thread.id %>" class="js-more">Read more</a>
           <% end %>

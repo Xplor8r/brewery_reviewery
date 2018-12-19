@@ -45,15 +45,15 @@ function attachListeners() {
             const stateId = new State(data["brewery_state"]).jsFriendlyId();
             const userId = new User(data["user"]).jsFriendlyId();
             const posts = data["posts"];
-            console.log(timeago.format(data["created_at"]))
+            console.log()
             $(".thread-header").html(data["brewery"]);
             $(".thread-state").html('<a href="/threads/brewery_state/' + stateId + '"' + ">" + data["brewery_state"]["name"] + "</a>");
             $(".thread-created").html(data["created_at"]);
             $(".thread-user").html('<a href="/users/' + userId + '"' + ">" + data["user"]["name"] + "</a>");
-            // posts.forEach(function(attributes){
-            //     const comment = new Post(attributes);
-            //     comment.show();
-            // })
+            posts.forEach(function(attributes){
+                const comment = new Post(attributes);
+                comment.showPrev();
+            })
             $(".js-next").attr("data-id", data["id"]);
             $(".js-previous").attr("data-id", data["id"]);
         }); 
@@ -76,21 +76,3 @@ function attachListeners() {
         })
     })
 }
-import TimeAgo from 'javascript-time-ago'
- 
-// Load locale-specific relative date/time formatting rules.
-import en from 'javascript-time-ago/locale/en'
-
-TimeAgo.addLocale(en)
-const timeAgo = new TimeAgo('en-US')
-timeAgo.format(new Date())
-// "just now"
- 
-timeAgo.format(Date.now() - 60 * 1000)
-// "a minute ago"
- 
-timeAgo.format(Date.now() - 2 * 60 * 60 * 1000)
-// "2 hours ago"
- 
-timeAgo.format(Date.now() - 24 * 60 * 60 * 1000)
-// "a day ago"

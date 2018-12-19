@@ -5,20 +5,40 @@ class Post {
         this.userId = attributes["user"]["id"];
         this.userName = attributes["user"]["name"];
         this.created = new Date(attributes["created_at"]).format();
-        console.log(this.created)
         this.threadId = attributes["brewery_thread_id"];
     }
-
+    // render comment
+    render() {
+        return '<div class="card-header"><div class="post-user"><small>' +
+        '<a href="/users/' + this.userId + '"' + '>' + this.userName + '</a></small>' + 
+        '<small class="post-created"> commented on ' + 
+        this.created + '</small></div></div><div class="card-body"><p class="text-muted post-body">' +
+        this.body + '</p></div>'
+    }
+    //show comments on index page
     show() {
-
-        var $div = $(".show-comments-" + this.threadId)
-        $div.append(
-                '<div class="card-header"><div class="post-user"><small>' +
-                '<a href="/users/' + this.userId + '"' + '>' + this.userName + '</a></small>' + 
-                '<small class="post-created"> commented on ' + 
-                this.created + '</small></div></div><div class="card-body"><p class="text-muted post-body">' +
-                this.body + '</p></div>'
-            );
+        const $div = $(".show-comments-" + this.threadId)
+        this.render();
+         $div.append(this.render());
+        //     '<div class="card-header"><div class="post-user"><small>' +
+        //     '<a href="/users/' + this.userId + '"' + '>' + this.userName + '</a></small>' + 
+        //     '<small class="post-created"> commented on ' + 
+        //     this.created + '</small></div></div><div class="card-body"><p class="text-muted post-body">' +
+        //     this.body + '</p></div>'
+        //);
+    }
+    //show previous thread comments on show page
+    showPrev() {
+        const $div = $(".show-comments-" + (this.threadId + 1))
+        $div.html("")
+        $div.append(this.render());
+        //     '<div class="card-header"><div class="post-user"><small>' +
+        //     '<a href="/users/' + this.userId + '"' + '>' + this.userName + '</a></small>' + 
+        //     '<small class="post-created"> commented on ' + 
+        //     this.created + '</small></div></div><div class="card-body"><p class="text-muted post-body">' +
+        //     this.body + '</p></div>'
+        // );
+        console.log(this.threadId)
     }
 }
 
