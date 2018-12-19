@@ -12,11 +12,18 @@
     </p>
   </div>
 </div>
-<div class="thread-posts"
+<div class="show-comments-<%= @brewery_thread.id %>">
   <%= render partial: "posts/post", collection: @brewery_thread.posts.includes(:user).sorted %>
   <% if session[:user_id] %>
     <%= render partial: "posts/form" %>
   <% end %>
 </div>
-<a href="" class="js-next" data-id="<%= @brewery_thread.id %>">Next Review</a> | <a href="" class="js-previous" data-id="<%= @brewery_thread.id %>">Previous Review</a>
+<hr />
 
+<% if @brewery_thread.id == @brewery_threads.length %>
+  <p><a href="/threads/<%= @brewery_thread.id %>" data-id="<%= @brewery_thread.id %>" class="text-muted js-previous">PREVIOUS REVIEW</a></p>
+<% elsif @brewery_thread.id == 1 %>
+  <p><a href="/threads/<%= @brewery_thread.id %>" data-id="<%= @brewery_thread.id %>" class="text-muted js-next">NEXT REVIEW</a></p>
+<% else %>
+  <p><a href="/threads/<%= @brewery_thread.id %>" data-id="<%= @brewery_thread.id %>" class="text-muted js-next">NEXT REVIEW</a> | <a href="/threads/<%= @brewery_thread.id %>" data-id="<%= @brewery_thread.id %>" class="text-muted js-previous">PREVIOUS REVIEW</a></p>
+<% end %>
