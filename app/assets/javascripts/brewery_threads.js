@@ -11,11 +11,18 @@ function attachListeners() {
     // show more of brewery_thread text
     $(".js-more").on("click", function(e) {
         e.preventDefault();
-        var id = parseInt($(".js-more").attr("data-id"));
-        $.get("/threads/" + id + ".json", function(data) {
-            let postBody = data["posts"][0]["body"]
-            $("#brewery_thread-" + id).html(postBody);
-        }); 
+        $.ajax({
+            method: 'GET',
+            url: this.href + ".json",
+        }).done(function(data){
+            console.log("awe yeah")
+            $("#brewery_thread-" + data["id"]).html(data["posts"][0]["body"])
+        // var id = parseInt($(".js-more").attr("data-id"));
+        // $.get("/threads/" + id + ".json", function(data) {
+        //     let postBody = data["posts"][0]["body"]
+        //     $("#brewery_thread-" + id).html(postBody);
+        // }); 
+        });
     });
     
     // show next brewery_thread
@@ -55,13 +62,16 @@ function attachListeners() {
     // show comments
     $(".js-comments").on("click", function(e){
         e.preventDefault();
+        $(this).empty();
         $.ajax({
             method: 'GET',
             url: this.href + ".json",
         }).done(function(data){
+            $("#brewery_thread-" + data["id"]).html(data["posts"][0]["body"])
+            data["posts"].shift();
+            console.log(data["posts"])
             const posts = data["posts"];
             posts.forEach(function(attributes){
-                console.log(attributes)
                 const comment = new Post(attributes);
                 comment.show();
             })

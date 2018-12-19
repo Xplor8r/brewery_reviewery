@@ -13,21 +13,14 @@
           </div>
           <p class="text-muted" id="brewery_thread-<%= brewery_thread.id %>"><%= truncate(brewery_thread.posts.first.body, length: 150) %>
           <% if brewery_thread.posts.first.body.length > 150 %>
-            <a href="#" class="js-more" data-id="<%= brewery_thread.id %>">Read more</a>
+            <a href="/threads/<%= brewery_thread.id %>" class="js-more">Read more</a>
           <% end %>
           </p>
-          <% if brewery_thread.posts_count > 1 %>
-            <small><a href="/threads/<%= brewery_thread.id %>" class="text-muted js-comments">comments</a></small>
-          <% end %>
           <div class="show-comments-<%= brewery_thread.id %>">
+            <% if brewery_thread.posts_count > 1 %>
+              <small><a href="/threads/<%= brewery_thread.id %>" class="brewery-thread-posts-count js-comments"><%= brewery_thread.posts_count - 1 %> <%= "comment".pluralize(brewery_thread.posts_count - 1) %></a></small>
+            <% end %>
           </div>
-
-        </div>
-        <div class="col-sm-2">
-          <%= link_to brewery_thread_path(brewery_thread), class: "brewery-thread-posts-count" do %>
-            <span class="count"><%= brewery_thread.posts_count %></span>
-            <small><%= "post".pluralize(brewery_thread.posts_count) %></small>
-          <% end %>
         </div>
       </div>
     </div>
