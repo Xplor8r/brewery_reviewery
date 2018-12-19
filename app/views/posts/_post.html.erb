@@ -1,11 +1,11 @@
-<% if @brewery_thread.posts.first %>
+<% if post == @brewery_thread.posts.first %>
   <p class="text-muted" id="posts_<%= @brewery_thread.posts.first.id %>"><%= @brewery_thread.posts.first.body %></p>
 <% else %>
   <%= content_tag :div, class: "text-muted", id: dom_id(post) do %>
       <div class="card-header">
         <% if is_admin_or_author?(post) %>
           <div class="col-md-6 pull-right">
-          <%= link_to "Edit this post", edit_brewery_thread_post_path(@brewery_thread, post), class: "text-muted", title: "Edit this Thread" %>
+          <%= link_to "Edit comment", edit_brewery_thread_post_path(@brewery_thread, post), class: "text-muted", title: "Edit this Thread" %>
           </div>
         <% end %>
 
@@ -13,7 +13,7 @@
           <strong class="post-user">
             <%= post.user.name %>
           </strong>
-          <small> commented on <%= post.created_at.strftime("%b %d, %Y") %></small>
+           commented on <%= post.created_at.strftime("%b %d, %Y") %>
         </div>
       </div>
     
