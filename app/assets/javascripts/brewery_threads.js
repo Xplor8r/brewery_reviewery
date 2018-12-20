@@ -15,6 +15,9 @@ function attachListeners() {
             url: this.href + ".json",
         }).done(function(data){
             $("#brewery_thread-" + data["id"]).html(data["posts"][0]["body"])
+        })
+        .error(function(error){
+            alert("Oops! There was an error!")
         });
     }); 
     // show next brewery_thread
@@ -56,7 +59,10 @@ function attachListeners() {
             })
             $(".js-next").attr("data-id", data["id"]);
             $(".js-previous").attr("data-id", data["id"]);
-        }); 
+        })
+        .error(function(error){
+            alert("Oops! There was an error!")
+        });
     });
     // show comments
     $(".js-comments").on("click", function(e){
@@ -74,5 +80,26 @@ function attachListeners() {
                 comment.show();
             })
         })
+        .error(function(error){
+            alert("Oops! There was an error!")
+        });
     })
+    // post a comment
+    //"js-submit"
+    $("#new_post").on("submit", function(e){
+        e.preventDefault();
+        $.ajax({          
+            url: this.action + ".json",
+            data: $(this).serialize(),
+            type: ($("input[name='_method']").val() || this.method),
+            success: function(data){
+                const comment = new Post(data);
+                $(".show-comments-").append(comment.show());
+                $("input[type=text], textarea").val("");
+            }
+        })
+        .error(function(error){
+            alert("Oops! There was an error!")
+        });
+    });
 }

@@ -4,6 +4,9 @@ class PostsController < ApplicationController
   before_action :b_post, only: [:edit, :update]
   before_action :require_admin_or_author_for_post!, only: [:edit, :update]
 
+  def index
+    render json: @brewery_thread
+  end
 
   def create
     @post = @brewery_thread.posts.new(post_params)

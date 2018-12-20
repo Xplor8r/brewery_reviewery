@@ -11,7 +11,7 @@
 
         <div>
           <strong class="post-user">
-            <%= post.user.name %>
+            <%= user_link(post.user) %>
           </strong>
            commented on <%= post.created_at.strftime("%b %d, %Y") %>
         </div>
