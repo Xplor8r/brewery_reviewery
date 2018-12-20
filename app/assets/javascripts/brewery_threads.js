@@ -27,11 +27,11 @@ function attachListeners() {
         $.get("/threads/" + nextId + ".json", function(data) {
             const stateId = new State(data["brewery_state"]).jsFriendlyId();
             const userId = new User(data["user"]).jsFriendlyId();
+            const created = new Date(data["created_at"]).format();
             const posts = data["posts"].filter(a => a !== data["posts"][0]);
-            console.log(posts);
             $(".thread-header").html(data["brewery"]);
             $(".thread-state").html('<a href="/threads/brewery_state/' + stateId + '"' + ">" + data["brewery_state"]["name"] + "</a>");
-            $(".thread-created").html(data["created_at"]);
+            $(".thread-created").html('• Posted on ' + created);
             $(".thread-user").html('<a href="/users/' + userId + '"' + ">" + data["user"]["name"] + "</a>");
             $(".show-comments").html('<p class="text-muted" id="posts_"' + data["id"] +'>' + data["posts"][0]["body"] + '</p>');
             posts.forEach(function(attributes){
@@ -42,7 +42,7 @@ function attachListeners() {
             $(".js-previous").attr("data-id", data["id"]);
         })
         .error(function(error){
-            alert("Oops! There was an error!")
+            alert("Sorry, no newer reviews.")
         });
     });
     // show previous brewery_thread
@@ -52,11 +52,11 @@ function attachListeners() {
         $.get("/threads/" + previousId + ".json", function(data) {
             const stateId = new State(data["brewery_state"]).jsFriendlyId();
             const userId = new User(data["user"]).jsFriendlyId();
+            const created = new Date(data["created_at"]).format();
             const posts = data["posts"].filter(a => a !== data["posts"][0]);
-            console.log(posts);
             $(".thread-header").html(data["brewery"]);
             $(".thread-state").html('<a href="/threads/brewery_state/' + stateId + '"' + ">" + data["brewery_state"]["name"] + "</a>");
-            $(".thread-created").html(data["created_at"]);
+            $(".thread-created").html('• Posted on ' + created);
             $(".thread-user").html('<a href="/users/' + userId + '"' + ">" + data["user"]["name"] + "</a>");
             $(".show-comments").html('<p class="text-muted" id="posts_"' + data["id"] +'>' + data["posts"][0]["body"] + '</p>');
             posts.forEach(function(attributes){
@@ -67,7 +67,7 @@ function attachListeners() {
             $(".js-previous").attr("data-id", data["id"]);
         })
         .error(function(error){
-            alert("Oops! There was an error!")
+            alert("Sorry, no older reviews.")
         });
     });
     // show comments
@@ -78,9 +78,8 @@ function attachListeners() {
             method: 'GET',
             url: this.href + ".json",
         }).done(function(data){
+            const posts = data["posts"].filter(a => a !== data["posts"][0]);
             $("#brewery_thread-" + data["id"]).html(data["posts"][0]["body"])
-            data["posts"].shift();
-            const posts = data["posts"];
             posts.forEach(function(attributes){
                 const comment = new Post(attributes);
                 comment.showIndex();
@@ -99,7 +98,6 @@ function attachListeners() {
             data: $(this).serialize(),
             type: ($("input[name='_method']").val() || this.method),
             success: function(data){
-                console.log(data)
                 const comment = new Post(data);
                 comment.show();
                 $("input[type=text], textarea").val("");
@@ -107,7 +105,8 @@ function attachListeners() {
             }
         })
         .error(function(error){
-            alert("Oops! There was an error!")
+            alert("Please enter comment text.");
+            $(".btn").removeAttr("disabled");
         });
     });
 }

@@ -12,7 +12,6 @@ class PostsController < ApplicationController
     @post = @brewery_thread.posts.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:message] = "Post Created Successfully!"
       respond_to do |format|
         format.html {redirect_to brewery_thread_path(@brewery_thread, anchor: "post_#{@post.id}")}
         format.json {render json: @post}
@@ -27,7 +26,6 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:message] = "Post Updated Successfully!"
       redirect_to brewery_thread_path(@brewery_thread)
     else
       render action: :edit

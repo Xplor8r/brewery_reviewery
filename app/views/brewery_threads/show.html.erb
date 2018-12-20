@@ -1,13 +1,8 @@
 <div class="row">
   <div class="col-md-12">
     
-    <% if @brewery_thread.id == @brewery_threads.length %>
-      <p><a href="#" data-id="<%= @brewery_thread.id %>" class="text-muted js-previous">PREVIOUS REVIEW</a></p>
-    <% elsif @brewery_thread.id == 1 %>
-      <p><a href="#" data-id="<%= @brewery_thread.id %>" class="text-muted js-next">NEXT REVIEW</a></p>
-    <% else %>
-      <p><a href="#" data-id="<%= @brewery_thread.id %>" class="text-muted js-next">NEXT REVIEW</a> | <a href="#" data-id="<%= @brewery_thread.id %>" class="text-muted js-previous">PREVIOUS REVIEW</a></p>
-    <% end %>
+  <p><a href="#" data-id="<%= @brewery_thread.id %>" class="text-muted js-next">NEXT REVIEW</a> | <a href="#" data-id="<%= @brewery_thread.id %>" class="text-muted js-previous">PREVIOUS REVIEW</a></p>
+
     <h4 class="thread-header"> <%= @brewery_thread.brewery %></h4>
     <% if is_admin_or_author?(@brewery_thread) %>
       <%= link_to "Edit this thread", edit_brewery_thread_path(@brewery_thread), class: "edit-thread text-muted", title: "Edit this Thread" %>
