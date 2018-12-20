@@ -188,5 +188,9 @@ footer {
     p {
       font-size: 1em;
     }
-
+  }
+  @media only screen and (max-width: 785px) {
+    .hide {
+      display: none;
+    }
   }
