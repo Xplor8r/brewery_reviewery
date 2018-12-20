@@ -15,6 +15,7 @@
   <div class="form-group">
     <%= f.text_area :body, placeholder: "Post a comment", rows: 2, class: "form-control", data: { behavior: "comment-body" } %>
   </div>
+  <div class="form-group">
     <%= f.submit "#{"Update" unless f.object.new_record?} Comment", class: "btn btn-primary"%>
   </div>
      

@@ -83,7 +83,8 @@ function attachListeners() {
             posts.forEach(function(attributes){
                 const comment = new Post(attributes);
                 comment.showIndex();
-            })
+            });
+            // $(".form-group-" + data["id"]).html('<textarea placeholder="Post a comment" rows="2" class="form-control" data-behavior="comment-body" name="post[body]" id="post_body"></textarea></div><div class="form-group-' + data["id"] + '"><input name="commit" value=" Comment" class="btn btn-primary" data-disable-with=" Comment" type="submit"></div>')
         })
         .error(function(error){
             alert("Oops! There was an error!")
@@ -93,6 +94,7 @@ function attachListeners() {
     //"js-submit"
     $("#new_post").on("submit", function(e){
         e.preventDefault();
+        console.log("new post")
         $.ajax({          
             url: this.action + ".json",
             data: $(this).serialize(),
@@ -109,4 +111,29 @@ function attachListeners() {
             $(".btn").removeAttr("disabled");
         });
     });
+
+    // $("#new_post-index").on("submit", function(e){
+    //     e.preventDefault();
+    //     console.log("new post")
+    //     $.ajax({          
+    //         url: this.action + ".json",
+    //         data: $(this).serialize(),
+    //         type: ($("input[name='_method']").val() || this.method),
+    //         success: function(data){
+    //             const comment = new Post(data);
+    //             comment.showIndex();
+    //             $("input[type=text], textarea").val("");
+    //             $(".btn").removeAttr("disabled");
+    //         }
+    //     })
+    //     .error(function(error){
+    //         alert("Please enter comment text.");
+    //         $(".btn").removeAttr("disabled");
+    //     });
+    // });
 }
+
+// <textarea placeholder="Post a comment" rows="2" class="form-control" data-behavior="comment-body" name="post[body]" id="post_body"></textarea>
+// <input name="commit" value=" Comment" class="btn btn-primary" data-disable-with=" Comment" type="submit">
+  
+  

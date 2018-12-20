@@ -21,6 +21,10 @@
               <small><a href="/threads/<%= brewery_thread.id %>" class="brewery-thread-posts-count js-comments"><%= brewery_thread.posts_count - 1 %> <%= "comment".pluralize(brewery_thread.posts_count - 1) %></a></small>
             <% end %>
           </div>
+          <% if session[:user_id] %>
+            <div class="form-group-<%= brewery_thread.id %>">
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
