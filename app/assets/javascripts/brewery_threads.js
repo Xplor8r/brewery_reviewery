@@ -23,39 +23,45 @@ function attachListeners() {
     // show next brewery_thread
     $(".js-next").on("click", function(e) {
         e.preventDefault();
-
         var nextId = parseInt($(".js-next").attr("data-id")) + 1;
         $.get("/threads/" + nextId + ".json", function(data) {
-
             const stateId = new State(data["brewery_state"]).jsFriendlyId();
-            console.log(data["created_at"])
             const userId = new User(data["user"]).jsFriendlyId();
+            const posts = data["posts"].filter(a => a !== data["posts"][0]);
+            console.log(posts);
             $(".thread-header").html(data["brewery"]);
             $(".thread-state").html('<a href="/threads/brewery_state/' + stateId + '"' + ">" + data["brewery_state"]["name"] + "</a>");
             $(".thread-created").html(data["created_at"]);
             $(".thread-user").html('<a href="/users/' + userId + '"' + ">" + data["user"]["name"] + "</a>");
-            $(".thread-posts").empty();
+            $(".show-comments").html('<p class="text-muted" id="posts_"' + data["id"] +'>' + data["posts"][0]["body"] + '</p>');
+            posts.forEach(function(attributes){
+                const comment = new Post(attributes);
+                comment.show();
+            })
             $(".js-next").attr("data-id", data["id"]);
             $(".js-previous").attr("data-id", data["id"]);
+        })
+        .error(function(error){
+            alert("Oops! There was an error!")
         });
-
     });
     // show previous brewery_thread
     $(".js-previous").on("click", function(e) {
         e.preventDefault();
-        var previousId = parseInt($(".js-previous").attr("data-id")) - 1;
+        var previousId = parseInt($(".js-next").attr("data-id")) - 1;
         $.get("/threads/" + previousId + ".json", function(data) {
             const stateId = new State(data["brewery_state"]).jsFriendlyId();
             const userId = new User(data["user"]).jsFriendlyId();
-            const posts = data["posts"];
-            console.log()
+            const posts = data["posts"].filter(a => a !== data["posts"][0]);
+            console.log(posts);
             $(".thread-header").html(data["brewery"]);
             $(".thread-state").html('<a href="/threads/brewery_state/' + stateId + '"' + ">" + data["brewery_state"]["name"] + "</a>");
             $(".thread-created").html(data["created_at"]);
             $(".thread-user").html('<a href="/users/' + userId + '"' + ">" + data["user"]["name"] + "</a>");
+            $(".show-comments").html('<p class="text-muted" id="posts_"' + data["id"] +'>' + data["posts"][0]["body"] + '</p>');
             posts.forEach(function(attributes){
                 const comment = new Post(attributes);
-                comment.showPrev();
+                comment.show();
             })
             $(".js-next").attr("data-id", data["id"]);
             $(".js-previous").attr("data-id", data["id"]);
@@ -77,7 +83,7 @@ function attachListeners() {
             const posts = data["posts"];
             posts.forEach(function(attributes){
                 const comment = new Post(attributes);
-                comment.show();
+                comment.showIndex();
             })
         })
         .error(function(error){
@@ -93,9 +99,11 @@ function attachListeners() {
             data: $(this).serialize(),
             type: ($("input[name='_method']").val() || this.method),
             success: function(data){
+                console.log(data)
                 const comment = new Post(data);
-                $(".show-comments-").append(comment.show());
+                comment.show();
                 $("input[type=text], textarea").val("");
+                $(".btn").removeAttr("disabled");
             }
         })
         .error(function(error){
