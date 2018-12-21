@@ -78,12 +78,15 @@ function attachListeners() {
             method: 'GET',
             url: this.href + ".json",
         }).done(function(data){
+            const brewery = new BreweryThread(data["brewery"]).jsFriendlyId();
             const posts = data["posts"].filter(a => a !== data["posts"][0]);
             $("#brewery_thread-" + data["id"]).html(data["posts"][0]["body"])
             posts.forEach(function(attributes){
                 const comment = new Post(attributes);
                 comment.showIndex();
             });
+            $(".show-comments-" + data["id"]).append('<a class="text-muted" href="/threads/' + brewery + '">post a comment</a>')
+            // show new post form
             // $(".form-group-" + data["id"]).html('<textarea placeholder="Post a comment" rows="2" class="form-control" data-behavior="comment-body" name="post[body]" id="post_body"></textarea></div><div class="form-group-' + data["id"] + '"><input name="commit" value=" Comment" class="btn btn-primary" data-disable-with=" Comment" type="submit"></div>')
         })
         .error(function(error){
@@ -112,6 +115,20 @@ function attachListeners() {
         });
     });
 
+    class BreweryThread {
+        constructor(name){
+            this.brewery = name;
+        }
+        jsFriendlyId() {
+            return this.brewery.toString().toLowerCase()
+            .replace(/\s+/g, '-')           // Replace spaces with -
+            .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+            .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+            .replace(/^-+/, '')             // Trim - from start of text
+            .replace(/-+$/, '');            // Trim - from end of text
+        }
+        
+    }
     // $("#new_post-index").on("submit", function(e){
     //     e.preventDefault();
     //     console.log("new post")
