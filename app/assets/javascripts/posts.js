@@ -35,6 +35,5 @@ Date.prototype.format = function() {
     var day = this.getDate();
     var month_index = this.getMonth();
     var year = this.getFullYear();
-
     return "" + month_names[month_index] + " " + day + ", " + year;
 }

@@ -2,6 +2,7 @@ class State {
     constructor(attributes){
         this.name = attributes["name"];
     }
+    // create slug
     jsFriendlyId() {
         return this.name.toString().toLowerCase()
         .replace(/\s+/g, '-')           // Replace spaces with -
@@ -9,6 +10,5 @@ class State {
         .replace(/\-\-+/g, '-')         // Replace multiple - with single -
         .replace(/^-+/, '')             // Trim - from start of text
         .replace(/-+$/, '');            // Trim - from end of text
-    }
-    
+    } 
 }
