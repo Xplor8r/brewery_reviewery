@@ -47,12 +47,13 @@ body {
 }
 
 h1 {
+  text-align: center;
   color: #190101;
 
 }
 
 h2 {
-  background: #a98747;
+  text-align: center;
 	color: #190101;
 	font-size: 2em;
 	padding: 0;
@@ -182,6 +183,7 @@ footer {
     }
     h2 {
       font-size: 1.5em;
+
     }
 
     h3 {
