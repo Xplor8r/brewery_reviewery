@@ -32,10 +32,13 @@ function showNextListener() {
         e.preventDefault();
         var nextId = parseInt($(".js-next").attr("data-id")) + 1;
         $.get(`/threads/${nextId}.json`, function(data) {
+            const brewery = new BreweryThread(data["brewery"]).jsFriendlyId();
             const stateId = new State(data["brewery_state"]).jsFriendlyId();
             const userId = new User(data["user"]).jsFriendlyId();
             const created = new Date(data["created_at"]).format();
             const posts = data["posts"].filter(a => a !== data["posts"][0]);
+
+            $("#new_post").attr("action", `/threads/${brewery}/posts`);
             $(".thread-header").html(data["brewery"]);
             $(".thread-state").html(`<a href="/threads/brewery_state/${stateId}">${data["brewery_state"]["name"]}</a>`);
             $(".thread-created").html(`• Posted on ${created}`);
@@ -56,24 +59,29 @@ function showNextListener() {
 function showPrevListener() {
     // show previous brewery_thread
     $(".js-previous").on("click", function(e) {
-        e.preventDefault();
+        e.preventDefault();       
         var previousId = parseInt($(".js-next").attr("data-id")) - 1;
+        // var action = $("#new_post").attr("action")
         $.get(`/threads/${previousId}.json`, function(data) {
+            const brewery = new BreweryThread(data["brewery"]).jsFriendlyId();
             const stateId = new State(data["brewery_state"]).jsFriendlyId();
             const userId = new User(data["user"]).jsFriendlyId();
             const created = new Date(data["created_at"]).format();
             const posts = data["posts"].filter(a => a !== data["posts"][0]);
+
+            $("#new_post").attr("action", `/threads/${brewery}/posts`);
             $(".thread-header").html(data["brewery"]);
             $(".thread-state").html(`<a href="/threads/brewery_state/${stateId}">${data["brewery_state"]["name"]}</a>`);
             $(".thread-created").html(`• Posted on ${created}`);
             $(".thread-user").html(`<a href="/users/${userId}">${data["user"]["name"]}</a>`);
             $(".show-comments").html(`<p class="text-muted" id="posts_${data["id"]}">${data["posts"][0]["body"]}</p>`);
-                posts.forEach(function(attributes){
+            posts.forEach(function(attributes){
                 const comment = new Post(attributes);
                 comment.show();
             })
             $(".js-next").attr("data-id", data["id"]);
             $(".js-previous").attr("data-id", data["id"]);
+            //console.log($("#new_post").action)
         })
         .error(function(error){
             alert("Sorry, no older reviews.")
@@ -108,7 +116,7 @@ function newPostListener() {
     $("#new_post").on("submit", function(e){
         e.preventDefault();
         $.ajax({          
-            url: `${this.action}.json`,
+            url: this.action + ".json",
             data: $(this).serialize(),
             type: ($("input[name='_method']").val() || this.method),
             success: function(data){
