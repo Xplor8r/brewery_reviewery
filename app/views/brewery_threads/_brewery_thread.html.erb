@@ -20,15 +20,15 @@
             <% if brewery_thread.posts_count > 1 %>
               <small><a href="/threads/<%= brewery_thread.id %>" class="brewery-thread-posts-count js-comments"><%= brewery_thread.posts_count - 1 %> <%= "comment".pluralize(brewery_thread.posts_count - 1) %></a></small>
             <% else %>
-            <%= link_to brewery_thread_path(brewery_thread), class: "text-muted" do %>post a comment<% end %>
-            <% end %>            
+              <% if session[:user_id] %>
+                <%= link_to brewery_thread_path(brewery_thread), class: "text-muted" do %>post a comment<% end %>
+              <% end %>
+            <% end %>           
           </div>
 
-          <% if false %>
-            <div class="form-group-<%= brewery_thread.id %>">
-            </div>
-          <% end %>
-          
+          <% if session[:user_id] %>
+            <div class="text-muted post-comment-<%= brewery_thread.id %>"></div>
+          <% end %>     
         </div>
       </div>
     </div>
