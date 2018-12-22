@@ -61,7 +61,6 @@ function showPrevListener() {
     $(".js-previous").on("click", function(e) {
         e.preventDefault();       
         var previousId = parseInt($(".js-next").attr("data-id")) - 1;
-        // var action = $("#new_post").attr("action")
         $.get(`/threads/${previousId}.json`, function(data) {
             const brewery = new BreweryThread(data["brewery"]).jsFriendlyId();
             const stateId = new State(data["brewery_state"]).jsFriendlyId();
@@ -81,7 +80,6 @@ function showPrevListener() {
             })
             $(".js-next").attr("data-id", data["id"]);
             $(".js-previous").attr("data-id", data["id"]);
-            //console.log($("#new_post").action)
         })
         .error(function(error){
             alert("Sorry, no older reviews.")
