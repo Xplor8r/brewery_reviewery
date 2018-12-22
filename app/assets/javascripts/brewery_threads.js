@@ -38,6 +38,7 @@ function showNextListener() {
             const created = new Date(data["created_at"]).format();
             const posts = data["posts"].filter(a => a !== data["posts"][0]);
 
+            $(".edit-thread").remove();
             $("#new_post").attr("action", `/threads/${brewery}/posts`);
             $(".thread-header").html(data["brewery"]);
             $(".thread-state").html(`<a href="/threads/brewery_state/${stateId}">${data["brewery_state"]["name"]}</a>`);
@@ -68,6 +69,7 @@ function showPrevListener() {
             const created = new Date(data["created_at"]).format();
             const posts = data["posts"].filter(a => a !== data["posts"][0]);
 
+            $(".edit-thread").remove();
             $("#new_post").attr("action", `/threads/${brewery}/posts`);
             $(".thread-header").html(data["brewery"]);
             $(".thread-state").html(`<a href="/threads/brewery_state/${stateId}">${data["brewery_state"]["name"]}</a>`);
