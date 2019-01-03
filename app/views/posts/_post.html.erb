@@ -1,23 +1,24 @@
-<%= content_tag :div, id: dom_id(post) do %>
-    <div class="card-header">
-      <% if is_admin_or_author?(post) %>
-        <div class="col-md-6 pull-right">
-        <%= link_to "Edit this post", edit_brewery_thread_post_path(@brewery_thread, post), class: "text-muted", title: "Edit this Thread" %>
-        </div>
-      <% end %>
+<% if post == @brewery_thread.posts.first %>
+  <p class="text-muted" id="posts_<%= @brewery_thread.posts.first.id %>"><%= @brewery_thread.posts.first.body %></p>
+<% else %>
+  <%= content_tag :div, class: "text-muted", id: dom_id(post) do %>
+      <div class="card-header">
+        <% if is_admin_or_author?(post) %>
+          <div class="col-md-6 pull-right">
+          <%= link_to "Edit comment", edit_brewery_thread_post_path(@brewery_thread, post), class: "text-muted", title: "Edit this Thread" %>
+          </div>
+        <% end %>
 
-      <div>
-        <strong class="post-user">
-          <%= post.user.name %>
-        </strong>
-        <small>
-          commented on
-          <%= link_to post.created_at.strftime("%b %d, %Y"), brewery_thread_path(@brewery_thread, anchor: "post_#{post.id}") %>:
-        </small>
+        <div>
+          <strong class="post-user">
+            <%= user_link(post.user) %>
+          </strong>
+           commented on <%= post.created_at.strftime("%b %d, %Y") %>
+        </div>
       </div>
-    </div>
-  
-    <div class="card-body">
-      <p><%= post.body %></p>
-    </div>
+    
+      <div class="card-body">
+        <p><%= post.body %></p>
+      </div>
+  <% end %>
 <% end %>

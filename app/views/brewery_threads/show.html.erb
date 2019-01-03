@@ -1,18 +1,24 @@
 <div class="row">
   <div class="col-md-12">
     
-    <h4> <%= @brewery_thread.brewery %></h4>
+  <p><a href="#" data-id="<%= @brewery_thread.id %>" class="text-muted js-next">NEXT REVIEW</a> | <a href="#" data-id="<%= @brewery_thread.id %>" class="text-muted js-previous">PREVIOUS REVIEW</a></p>
+
+    <h4 class="thread-header"> <%= @brewery_thread.brewery %></h4>
     <% if is_admin_or_author?(@brewery_thread) %>
-      <%= link_to "Edit this thread", edit_brewery_thread_path(@brewery_thread), class: "text-muted", title: "Edit this Thread" %>
+      <%= link_to "Edit this thread", edit_brewery_thread_path(@brewery_thread), class: "edit-thread text-muted", title: "Edit this Thread" %>
     <% end %>
 
-    <p class="thread-details">
-      <strong><%= brewery_state_link(@brewery_thread.brewery_state) %></strong>
-      • Posted <%= time_ago_in_words(@brewery_thread.created_at) + ' ago' %> by <%= user_link(@brewery_thread.user) %>
+    <p class="card-header thread-details">
+      <strong class="thread-state"><%= brewery_state_link(@brewery_thread.brewery_state) %></strong>
+      <span class="thread-created">• Posted <%= time_ago_in_words(@brewery_thread.created_at) + ' ago' %></span> by <strong class="thread-user"><%= user_link(@brewery_thread.user) %></strong>
     </p>
   </div>
 </div>
-<%= render partial: "posts/post", collection: @brewery_thread.posts.includes(:user).sorted %>
-<% if session[:user_id] %>
-  <%= render partial: "posts/form" %>
-<% end %>
+<div class="show-comments">
+  <%= render partial: "posts/post", collection: @brewery_thread.posts.includes(:user).sorted %>
+</div>
+  <% if session[:user_id] %>
+    <%= render partial: "posts/form" %>
+  <% end %>
+<hr />
+

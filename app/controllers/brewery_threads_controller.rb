@@ -6,11 +6,20 @@ class BreweryThreadsController < ApplicationController
 
   def index
     @brewery_threads = BreweryThread.sorted.includes(:user, :brewery_state)
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render json: @brewery_threads}
+    end
   end
 
   def show
+    @brewery_threads = BreweryThread.all
     @post = Post.new
     @post.user = current_user
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: @brewery_thread}
+    end
   end
 
   def new
@@ -23,9 +32,12 @@ class BreweryThreadsController < ApplicationController
     @brewery_thread.posts.each { |post| post.user_id = current_user.id }
     if @brewery_thread.save
       flash[:message] =  "Thread Created Successfully."
-      redirect_to brewery_thread_path(@brewery_thread)
+      respond_to do |format|
+        format.html {redirect_to brewery_thread_path(@brewery_thread)}
+        format.json {render json: @brewery_thread}
+      end
     else
-      render action: :new
+      render json: @brewery_thread, status: 406
     end
   end
 
@@ -47,7 +59,7 @@ class BreweryThreadsController < ApplicationController
       @brewery_thread = BreweryThread.friendly.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       flash[:error] = "Sorry, something went wrong."
-      redirect_to root_path 
+      render action: :index
     end
 
     def brewery_thread_params

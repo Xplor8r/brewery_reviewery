@@ -47,11 +47,13 @@ body {
 }
 
 h1 {
+  text-align: center;
   color: #190101;
 
 }
 
 h2 {
+  text-align: center;
 	color: #190101;
 	font-size: 2em;
 	padding: 0;
@@ -106,6 +108,7 @@ footer {
 
 .brewery-thread-filters a {
     color: #555;
+
 }
 
 .active {
@@ -129,6 +132,7 @@ footer {
   .brewery-thread-filters a {
     color: #555555;
     display: block;
+    font-size: 1em;
 
     &:hover {
       color: #222222;
@@ -179,6 +183,7 @@ footer {
     }
     h2 {
       font-size: 1.5em;
+
     }
 
     h3 {
@@ -188,5 +193,9 @@ footer {
     p {
       font-size: 1em;
     }
-
+  }
+  @media only screen and (max-width: 785px) {
+    .hide {
+      display: none;
+    }
   }
