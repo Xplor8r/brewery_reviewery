@@ -3,12 +3,30 @@
 //= require posts
 
 $( document ).on('turbolinks:load', function() {
+    sortThreads();
     showMoreListener();
     showNextListener();
     showPrevListener();
     showPostsListener();
     newPostListener();
 });
+
+function sortThreads() {
+    $.ajax({
+        method: 'GET',
+        url: "http://localhost:3000/threads" + ".json",
+    }).done(function(data) {
+        data.sort((a, b) => (a.posts < b.posts) ? 1 : ((a.posts > b.posts) ? -1 : 0))
+        // data.sort(function compare(a, b) {
+        //     if (a.posts.length < b.posts.length)
+        //       return 1;
+        //     if (a.posts.length > b.posts.length)
+        //       return -1;
+        //     return 0;
+        // })    
+        console.log(data)
+    })
+}
 
 function showMoreListener() {
     // show more of brewery_thread text
@@ -88,6 +106,7 @@ function showPrevListener() {
         });
     });
 }
+
 function showPostsListener() {
     // show comments
     $(".js-comments").on("click", function(e){
