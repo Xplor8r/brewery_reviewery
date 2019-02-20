@@ -66,7 +66,7 @@ gem 'bootstrap'
 gem 'active_model_serializers'
 gem 'jquery-rails'
 
-group :deployment do
+group :development do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 end
