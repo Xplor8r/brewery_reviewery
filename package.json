@@ -1,7 +1,0 @@
-{
-  "name": "brewery_reviewery",
-  "private": true,
-  "dependencies": {
-    "javascript-time-ago": "^1.0.34"
-  }
-}
