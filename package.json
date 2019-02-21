@@ -1,0 +1,7 @@
+{
+    "name": "brewery-reviewery",
+    "version": "0.0.1",
+    "engines": {
+        "npm": "6.x"
+    }
+}
