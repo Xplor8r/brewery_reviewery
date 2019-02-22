@@ -65,7 +65,6 @@ gem 'omniauth-google-oauth2'
 gem 'bootstrap'
 gem 'active_model_serializers'
 gem 'jquery-rails'
-gem 'yarn', '~> 0.1.1'
 
 group :development do
   # Use sqlite3 as the database for Active Record
