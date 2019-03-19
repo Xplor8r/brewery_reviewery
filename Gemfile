@@ -68,3 +68,4 @@ gem 'omniauth-google-oauth2'
 gem "bootstrap", ">= 4.3.1"
 gem 'active_model_serializers'
 gem 'jquery-rails'
+
