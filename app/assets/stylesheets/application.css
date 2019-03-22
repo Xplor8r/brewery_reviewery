@@ -16,7 +16,7 @@ img {
 }
 
 .right {
-  align: right;
+  align-content: right;
   z-index: 4;
 }
 
@@ -79,7 +79,6 @@ p  {
 
 #inline-button {
   display: inline;
-  float: left;
   margin-left: 3px;
 }
 
@@ -133,13 +132,13 @@ footer {
     color: #555555;
     display: block;
     font-size: 1em;
-
-    &:hover {
-      color: #222222;
-      font-weight: bold;
-      text-decoration: none
-    }
   }
+  .brewery-thread-filters :hover {
+    color: #222222;
+    font-weight: bold;
+    text-decoration: none
+  }
+
   
   .brewery-thread-details {
     color: #999;
@@ -150,8 +149,8 @@ footer {
   .brewery-thread-posts-count {
     color: #190101;
     text-align: center;
-  
-    span, small {
+  }
+  .brewery-thread-posts-count span, small {
       display: block;
     }
   
@@ -161,12 +160,10 @@ footer {
       line-height: 1em;
     }
   
-    &:hover {
+    .brewery-thread-posts-count :hover {
       color: #190101;
       text-decoration: none;
     }
-  }
-
    .text-muted {
     color: #999;
     margin-top: 6px;
