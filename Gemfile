@@ -76,5 +76,5 @@ group :production do
   gem 'rails_12factor'
 end
 
-ruby '2.5.3'
+ruby '2.6.1'
 gem "aws-sdk-s3", require: false
