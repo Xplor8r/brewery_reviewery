@@ -6,7 +6,7 @@ Visit your Local Brewery or visit a Brewery thats new to you. Eat some grub, sip
 [![Brewery Reviewery2](https://img.youtube.com/vi/TDN1bEu64zk/hqdefault.jpg)](https://youtu.be/TDN1bEu64zk)
 
 # Getting Started
-Fork and clone this repo. Then run bundle install to install associated gems, and rake db:migrate to activate your database. Deploy the program in your browser by running thin start --ssl. Finally, navigate to your https://localhost:3000 in your browser.
+Fork and clone this repo. Then run bundle install to install associated gems, and rake db:migrate to activate your database, then rake db:seed to fill the database with fake user data. Deploy the program in your browser by running rails s. Finally, navigate to your https://localhost:3000 in your browser.
 
 # Contributing
 All bug reports and pull requests are more than welcome on Github at https://github.com/Xplor8r/brewery_reviewery. This project is intended to be space that promotes collaboration. Contributors are expected to adhere to standard codes of conduct.
