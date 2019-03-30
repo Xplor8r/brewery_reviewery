@@ -1,5 +1,9 @@
 # Brewery Reviewery
-Visit your Local Brewery or visit a Brewery thats new to you. Eat some grub, sip some craft brew, then share a review using the new app Brewery Reviewery. Brewery Reviewer is a Ruby on Rails review forum app for posting reviews for breweries across the U.S. Users must sign up or log in in order to contribute.
+
++ Developed MVC framework using Ruby on Rails
++ Integrated front-end functionality with Javascript, JQuery, JSON, and Ajax
++ Authenticated user via ActiveRecord and OmniAuth
+
 # Video Demo
 [![Brewery Reviewery1](https://img.youtube.com/vi/rq77gj87T0w/hqdefault.jpg)](https://youtu.be/rq77gj87T0w)
 # Video Demo after user experience improvements
