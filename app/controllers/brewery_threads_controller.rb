@@ -8,7 +8,7 @@ class BreweryThreadsController < ApplicationController
     @brewery_threads = BreweryThread.sorted.includes(:user, :brewery_state)
     respond_to do |format|
       format.html {render :index}
-      format.json {render json: @brewery_threads}
+      format.json {render json: @brewery_threads, include: ['brewery_state', 'user.name', 'user.slug', 'posts.user.name', 'posts.user.slug']}
     end
   end
 
